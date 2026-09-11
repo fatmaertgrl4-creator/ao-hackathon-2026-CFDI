@@ -1,18 +1,21 @@
 {
-  "_durum": "TASLAK - tum TODO degerleri teslimden once doldurulmalidir",
   "takim": {
     "ad": "CFDI",
-    "uyeler": ["TODO"],
+    "uyeler": [
+      "TODO"
+    ],
     "iletisim": "TODO"
   },
   "proje": {
     "ad": "TODO",
-    "ozet": "TODO - tek cumle",
+    "ozet": "TODO",
     "deploy_url": null
   },
   "calistirma": {
-    "komut": "TODO - tek komut",
-    "on_kosullar": ["TODO"],
+    "komut": "TODO",
+    "on_kosullar": [
+      "TODO"
+    ],
     "veri_yolu": "./data"
   },
   "ai_kullanimi": {
@@ -21,12 +24,12 @@
       {
         "ad": "TODO",
         "surum": "TODO",
-        "kullanim": "kodlama"
+        "kullanim": "TODO"
       }
     ],
     "mcp_sunuculari": [],
     "apiler": [],
-    "insan_ai_is_bolumu": "TODO - hangi karar insanda, hangisi modelde"
+    "insan_ai_is_bolumu": "TODO"
   },
   "cozum": {
     "yaklasim": "TODO",
@@ -34,6 +37,9 @@
     "olctugumuz_metrikler": {}
   },
   "sunum": {
-    "demo_akisi": ["TODO - adim 1", "TODO - adim 2"]
+    "demo_akisi": [
+      "TODO",
+      "TODO"
+    ]
   }
 }

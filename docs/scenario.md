@@ -1,0 +1,1 @@
+# Yarışmada verilen senaryo buraya yazılacak.

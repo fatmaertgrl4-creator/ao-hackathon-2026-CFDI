@@ -75,7 +75,12 @@ HTTP API ayrıca `ACT-01` aksiyonunun `acik` durumundan `inceleniyor` durumuna g
 
 ## AI Stratejisi ve İş Bölümü
 
-Bu geliştirme sırasında GitHub Copilot Chat kullanıldı. Model sürümü bu oturumda doğrulanmadığı için final teslimden önce ekip tarafından ayrıca kontrol edilmelidir.
+Bu geliştirme sırasında GitHub Copilot Chat kullanıldı.
+
+- Araç: GitHub Copilot Chat
+- VS Code Copilot extension sürümü: 0.65.0
+- VS Code sürümü: 1.137.0
+- Oturum tarihi: 2026-09-16
 
 | Aşama | AI'ın Rolü | İnsan Kararı / Doğrulaması |
 |---|---|---|
@@ -120,10 +125,11 @@ Demo akışı: [demo/README.md](demo/README.md)
 - MCP sunucusu kullanılmadı.
 - Harici API entegrasyonu kullanılmadı.
 - Kalıcı veritabanı kullanılmadı; aksiyon durumu demo sırasında bellek içinde tutulur.
+- Kullanılan AI çalışma ortamı: GitHub Copilot Chat + VS Code Copilot extension 0.65.0 + VS Code 1.137.0
 
 ## Bilinen Sınırlar
 
 - Kök nedenler doğrulama verisi olmadan hipotez olarak sunulur; kesin gerçek kök nedeni garanti edilmez.
 - Aksiyon durumları süreç boyunca bellekte tutulur; uygulama yeniden başlatıldığında sıfırlanır.
 - Korelasyon kuralları senaryodaki CSV alanlarına göre tasarlanmıştır; farklı şema için uyarlama gerekir.
-- Model sürümü ve takım üyesi bilgileri final teslimden önce ekip tarafından doğrulanmalıdır.
+- Farklı bir Copilot model adı/sürümü raporlanacaksa bu bilgi ekip tarafından ayrıca doğrulanmalıdır.

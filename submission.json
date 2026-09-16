@@ -2,9 +2,12 @@
   "takim": {
     "ad": "CFDI",
     "uyeler": [
-      "Ekip tarafindan final oncesi doldurulacak"
+      "Elif Cil",
+      "Dogukan Sainkaplan",
+      "Niyazi Gencer Gunduz",
+      "Fatma Ertugrul"
     ],
-    "iletisim": "Ekip tarafindan final oncesi doldurulacak"
+    "iletisim": "cil.elif@turkcell.com.tr, niyazi.gunduz@turkcell.com.tr, dogukan.sainkaplan@turkcell.com.tr, fatma.ertugrul@turkcell.com.tr"
   },
   "proje": {
     "ad": "CFDI Alarm Korelasyon Paneli",
@@ -25,8 +28,8 @@
     "platform": "GitHub Copilot Chat",
     "modeller": [
       {
-        "ad": "GitHub Copilot",
-        "surum": "Bu oturumda dogrulanmadi",
+        "ad": "GitHub Copilot Chat",
+        "surum": "VS Code Copilot extension 0.65.0, VS Code 1.137.0, oturum tarihi 2026-09-16",
         "kullanim": "Senaryo analizi, algoritma taslagi, kod gelistirme ve dokumantasyon destegi"
       }
     ],

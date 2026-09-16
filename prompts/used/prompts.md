@@ -95,11 +95,36 @@ Bu prompt, AI kullanım sürecinin şeffaf şekilde belgelenmesini ve son çalı
 - [prompts.md](prompts.md)
 - [../../submission.json](../../submission.json)
 
+## 5. Submission JSON, Sürüm Bilgisi ve Git Push İsteği
+
+**Saat:** 16:11:59
+
+**Prompt:**
+
+```text
+`submission.json`** henüz final değil.** JSON sözdizimini ayrıca parse ettim; **geçerli JSON** ✅. Yani organizatörün bugün özellikle uyardığı “eksik virgül/bozuk JSON” problemi yok. Fakat içeride takım üyesi ve iletişim hâlâ `"Ekip tarafindan final oncesi doldurulacak"` yazıyor. Model sürümü de `"Bu oturumda dogrulanmadi"`. Bunlar finalden önce kesin doldurulmalı. buna göre submission json'ı güncelle, bu promptu da prompts/used altındaki prompts.md içerisine yaz ve githuba commitle ardından da pushla kullanılan model ve sürüm: Araç: GitHub Copilot Chat
+VS Code Copilot extension sürümü: 0.65.0
+VS Code sürümü: 1.137.0
+Oturum tarihi: 2026-09-16 bu sürüm bilgilerini `README.md`, `AI_JURI.md` bu dosyalara da ekle ve commitleyip pushla
+```
+
+**Jüri için kısa yorum:**
+
+Bu prompt, teslimat metadatasındaki eksik alanların kapatılmasını istedi. Kullanıcı önce `submission.json` dosyasının sözdizimsel olarak geçerli olduğunu doğruladı, ardından takım üyeleri, iletişim bilgileri ve kullanılan GitHub Copilot Chat / VS Code sürüm bilgilerinin teslim dokümanlarına işlenmesini talep etti. Bu adım sonunda `submission.json`, `README.md`, `AI_JURI.md` ve bu prompt kaydı güncellendi; değişiklikler commit edilip GitHub'a gönderildi.
+
+**Repository kanıtı:**
+
+- [../../submission.json](../../submission.json)
+- [../../README.md](../../README.md)
+- [../../AI_JURI.md](../../AI_JURI.md)
+- [prompts.md](prompts.md)
+
 ## Özet
 
-Bu oturumdaki promptlar, çözümün dört ana gelişim aşamasını gösterir:
+Bu oturumdaki promptlar, çözümün beş ana gelişim aşamasını gösterir:
 
 1. Senaryo gereksinimlerine uygun ilk korelasyon uygulaması.
 2. Bağımlılık/envanter verisiyle zenginleştirilmiş grup alarm ekranı.
 3. İndirgeme oranını iyileştiren, yanlış birleştirme riskini sınırlayan konsolidasyon.
 4. AI kullanım kanıtlarının kaydedilmesi ve GitHub'a gönderim hazırlığı.
+5. Submission metadata, sürüm bilgileri ve final dokümanlarının senkronize edilmesi.

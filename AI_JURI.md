@@ -9,7 +9,7 @@
 
 | Araç / Platform | Model | Sürüm | Kullanım Amacı |
 |---|---|---|---|
-| GitHub Copilot Chat | GitHub Copilot | Bu oturumda doğrulanmadı | Senaryo analizi, algoritma taslağı, kod geliştirme ve dokümantasyon desteği |
+| GitHub Copilot Chat | GitHub Copilot Chat | VS Code Copilot extension 0.65.0 · VS Code 1.137.0 · Oturum: 2026-09-16 | Senaryo analizi, algoritma taslağı, kod geliştirme ve dokümantasyon desteği |
 
 SAKA bu uygulama geliştirme adımında çalışan ürün içine entegre edilmedi. Final teslimde SAKA kullanılırsa model adı ve sürümü ayrıca doğrulanmalıdır.
 
@@ -27,7 +27,7 @@ AI, senaryo gereksinimlerini uygulanabilir bileşenlere çevirmek, korelasyon ya
 | Veri keşfi | İncelenecek sinyalleri önermek | 3.000 satır, alarm tipleri ve kritik lokasyon yoğunluğunu komutla doğrulamak |
 | Kodlama | Korelasyon uygulamasını ve web panelini üretmek | Komutları çalıştırıp çıktıyı kontrol etmek |
 | Test | JSON ve HTTP doğrulama komutlarını çalıştırmak | 7 kart ve aksiyon durum değişikliğini doğrulamak |
-| Dokümantasyon | Gerçek metriklerle doküman taslağı oluşturmak | Final takım bilgisi ve model sürümü gibi doğrulanmamış alanları ayırmak |
+| Dokümantasyon | Gerçek metriklerle doküman taslağı oluşturmak | Takım bilgisi, iletişim ve kullanılan araç sürümlerini doğrulamak |
 
 ### İş Akışımız
 
@@ -142,4 +142,4 @@ Tarayıcıda 3.000 alarm, 7 olay kartı, gürültü denetimi ve aksiyon durum ko
 - Kök nedenler doğrulama etiketi olmadığı için hipotez olarak sunulur.
 - Aksiyon durumları kalıcı değildir; sunucu yeniden başlatıldığında sıfırlanır.
 - Çalışan üründe canlı LLM entegrasyonu yoktur.
-- Model sürümü ve final takım üyeleri ekip tarafından ayrıca doğrulanmalıdır.
+- Farklı bir Copilot model adı veya ek araç sürümü raporlanacaksa ekip tarafından ayrıca doğrulanmalıdır.

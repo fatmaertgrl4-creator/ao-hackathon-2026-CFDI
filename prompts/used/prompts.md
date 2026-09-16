@@ -175,9 +175,28 @@ Bu prompt, final repo durumuyla faz takibinin gerçekten hizalanmasını istedi.
 - [../../submission.json](../../submission.json)
 - [prompts.md](prompts.md)
 
+## 7. Kullanılmayan Claude Yapıları Notu
+
+**Saat:** 16:40:34
+
+**Prompt:**
+
+```text
+Claude tabanlı kullanım için hazırlanan `skills/` ve `prompts/templates/` yapıları, geliştirme sürecinde Copilot tercih edildiği için kullanılmamış ve başlangıç repo bütünlüğünü korumak amacıyla değiştirilmemiştir. bu bilgilendirmeyi ai_juri.md içerisine ekle ve commitleyip promptslara bu promptu ekle ve pushla
+```
+
+**Jüri için kısa yorum:**
+
+Bu prompt, repoda bulunan fakat bu geliştirme sürecinde aktif kullanılmayan hazırlık yapılarının yanlış yorumlanmasını önlemek için açıklayıcı bir not eklenmesini istedi. Buna göre Claude odaklı `skills/` ve `prompts/templates/` klasörlerinin Copilot tercih edildiği için kullanılmadığı, ayrıca başlangıç repo bütünlüğünü korumak amacıyla değiştirilmediği [AI_JURI.md](../../AI_JURI.md) içine açıkça işlendi ve bu istek prompt kanıtlarına eklendi.
+
+**Repository kanıtı:**
+
+- [../../AI_JURI.md](../../AI_JURI.md)
+- [prompts.md](prompts.md)
+
 ## Özet
 
-Bu oturumdaki promptlar, çözümün altı ana gelişim aşamasını gösterir:
+Bu oturumdaki promptlar, çözümün yedi ana gelişim aşamasını gösterir:
 
 1. Senaryo gereksinimlerine uygun ilk korelasyon uygulaması.
 2. Bağımlılık/envanter verisiyle zenginleştirilmiş grup alarm ekranı.
@@ -185,3 +204,4 @@ Bu oturumdaki promptlar, çözümün altı ana gelişim aşamasını gösterir:
 4. AI kullanım kanıtlarının kaydedilmesi ve GitHub'a gönderim hazırlığı.
 5. Submission metadata, sürüm bilgileri ve final dokümanlarının senkronize edilmesi.
 6. Faz durumlarının gerçek repo kanıtlarıyla hizalanması ve UI / metin netleştirmeleri.
+7. Kullanılmayan Claude odaklı hazırlık yapılarının dokümantasyonda netleştirilmesi.

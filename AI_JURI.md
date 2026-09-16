@@ -19,6 +19,8 @@ AI, senaryo gereksinimlerini uygulanabilir bileşenlere çevirmek, korelasyon ya
 
 Ürün içinde canlı LLM çağrısı yoktur; nihai olay kartları deterministik korelasyon algoritmasıyla üretilir.
 
+Claude tabanlı kullanım için hazırlanan `skills/` ve `prompts/templates/` yapıları, geliştirme sürecinde Copilot tercih edildiği için kullanılmamış ve başlangıç repo bütünlüğünü korumak amacıyla değiştirilmemiştir.
+
 ### İnsan – AI İş Bölümü
 
 | Aşama | AI'ın Rolü | İnsan Kararı / Doğrulaması |

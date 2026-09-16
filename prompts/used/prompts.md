@@ -276,9 +276,36 @@ Bu prompt, proje içinde kullanılan asistanın Copilot olduğunu netleştirmek 
 - [../../copilot-instructions.md](../../copilot-instructions.md)
 - [prompts.md](prompts.md)
 
+## 10. Copilot Sürüm Bilgisi Doğrulaması
+
+**Saat:** 16:58:16
+
+**Prompt:**
+
+```text
+AI_JURI'de platform/model alanında `GitHub Copilot Chat` yazıyor; prompt kaydında da gerçek model sürümünün doğrulanmadığı belirtilmişti. README/AI_JURI zaten “farklı bir model adı raporlanacaksa doğrulayın” diyerek bunu dürüstçe sınırlıyor.
+burada bizim doğru sürümümüz bu aşağıdaki buna göre güncellenmesi gereken alanları güncelle, 
+
+Araç: GitHub Copilot Chat
+VS Code Copilot extension sürümü: 0.65.0
+VS Code sürümü: 1.137.0
+Oturum tarihi: 2026-09-16 buna göre prompts.md altına bu promptu yaz, kaynak koda dokunmadan sadece gerekli dosyaları değiştirerek githuba commitle ve pushla
+```
+
+**Jüri için kısa yorum:**
+
+Bu prompt, AI araç/sürüm bilgisinin yeniden gözden geçirilmesini istedi. Kontrolde [README.md](../../README.md), [AI_JURI.md](../../AI_JURI.md) ve [submission.json](../../submission.json) içindeki GitHub Copilot Chat / VS Code Copilot extension `0.65.0` / VS Code `1.137.0` / `2026-09-16` bilgilerinin zaten doğrulanan değerlerle uyumlu olduğu görüldü. Bu nedenle yalnızca prompt kanıt kaydı eklendi; kaynak kodlara dokunulmadı.
+
+**Repository kanıtı:**
+
+- [../../README.md](../../README.md)
+- [../../AI_JURI.md](../../AI_JURI.md)
+- [../../submission.json](../../submission.json)
+- [prompts.md](prompts.md)
+
 ## Özet
 
-Bu oturumdaki promptlar, çözümün dokuz ana gelişim aşamasını gösterir:
+Bu oturumdaki promptlar, çözümün on ana gelişim aşamasını gösterir:
 
 1. Senaryo gereksinimlerine uygun ilk korelasyon uygulaması.
 2. Bağımlılık/envanter verisiyle zenginleştirilmiş grup alarm ekranı.
@@ -289,3 +316,4 @@ Bu oturumdaki promptlar, çözümün dokuz ana gelişim aşamasını gösterir:
 7. Kullanılmayan Claude odaklı hazırlık yapılarının dokümantasyonda netleştirilmesi.
 8. Demo kanıtları, veri yolu anlatımı ve final repo görünümünün temizlenmesi.
 9. Copilot kullanımına uygun kök talimat dosyasının oluşturulması.
+10. Copilot araç ve sürüm bilgisinin doğrulanıp prompt kanıtına eklenmesi.

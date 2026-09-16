@@ -44,7 +44,7 @@ Veri dosyaları için iki yol desteklenir:
 Web paneli:
 
 ```bash
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000
+python3 src/app.py --port 8000
 ```
 
 Tarayıcı adresi:
@@ -56,12 +56,12 @@ http://127.0.0.1:8000
 JSON analiz çıktısı:
 
 ```bash
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json
+python3 src/app.py --json
 ```
 
 ## Doğrulanan Sonuçlar
 
-`python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json` komutu çalıştırıldı.
+`python3 src/app.py --json` komutu çalıştırıldı.
 
 | Metrik | Sonuç | Ölçüm / Hesaplama Yöntemi |
 |---|---:|---|

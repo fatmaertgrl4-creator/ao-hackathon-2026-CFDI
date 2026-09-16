@@ -103,6 +103,7 @@ CriticalityRank = {"dusuk": 1, "orta": 2, "yuksek": 3, "kritik": 4}
 
 def default_data_path() -> Path:
     candidates = [
+        Path("data/raw/alarms.csv"),
         Path("data/alarms.csv"),
         Path("../katilimci_paketi/alarms.csv"),
         Path("/Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv"),
@@ -115,6 +116,7 @@ def default_data_path() -> Path:
 
 def default_dependency_path() -> Path:
     candidates = [
+        Path("data/raw/service_dependencies.csv"),
         Path("data/service_dependencies.csv"),
         Path("../katilimci_paketi/service_dependencies.csv"),
         Path("/Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv"),
@@ -127,6 +129,7 @@ def default_dependency_path() -> Path:
 
 def default_inventory_path() -> Path:
     candidates = [
+        Path("data/raw/host_inventory.csv"),
         Path("data/host_inventory.csv"),
         Path("../katilimci_paketi/host_inventory.csv"),
         Path("/Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv"),

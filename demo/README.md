@@ -13,7 +13,7 @@ Jüriye 3.000 alarmın çalışan uygulama tarafından 7 olay kartına indirildi
 **Komut:**
 
 ```bash
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000
+python3 src/app.py --port 8000
 ```
 
 **Gösterilecek:** `http://127.0.0.1:8000` adresindeki panel.

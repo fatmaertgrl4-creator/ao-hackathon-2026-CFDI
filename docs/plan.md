@@ -101,7 +101,7 @@ AI'ın rolü:
 Çalıştırılan komut:
 
 ```bash
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json
+python3 src/app.py --json
 ```
 
 Sonuç:

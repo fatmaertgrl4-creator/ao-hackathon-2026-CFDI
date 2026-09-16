@@ -108,7 +108,7 @@ src/app.py:663-1019
 ### Çıktı / Demo Kanıtı
 
 ```text
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json
+python3 src/app.py --json
 GET http://127.0.0.1:8000/api/analysis
 POST http://127.0.0.1:8000/api/actions/ACT-01
 ```
@@ -124,7 +124,7 @@ POST http://127.0.0.1:8000/api/actions/ACT-01
 ### Tek Komut
 
 ```bash
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000
+python3 src/app.py --port 8000
 ```
 
 ### Beklenen Çıktı

@@ -65,7 +65,7 @@ CFDI Alarm Korelasyon Paneli tek Python giriş noktasıyla çalışan, harici pa
 
 Çalışan ürün içinde canlı LLM veya harici AI API çağrısı yoktur. AI bu geliştirme sürecinde GitHub Copilot Chat olarak kullanıldı: senaryo gereksinimlerinin çözüme çevrilmesi, algoritma tasarımı, kod üretimi ve dokümantasyon taslağı için destek verdi.
 
-Model çıktıları doğrudan gerçek kabul edilmedi; uygulama `python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json` ve HTTP API kontrolleriyle doğrulandı.
+Model çıktıları doğrudan gerçek kabul edilmedi; uygulama `python3 src/app.py --json` ve HTTP API kontrolleriyle doğrulandı.
 
 ## 5. Açıklanabilirlik / XAI Akışı
 

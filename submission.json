@@ -12,14 +12,14 @@
     "deploy_url": null
   },
   "calistirma": {
-    "komut": "python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000",
+    "komut": "python3 src/app.py --port 8000",
     "on_kosullar": [
       "Python 3.11+",
       "Resmi veri paketindeki alarms.csv dosyasi",
       "Resmi veri paketindeki service_dependencies.csv ve host_inventory.csv dosyalari",
       "Harici Python paketi gerekmez"
     ],
-    "veri_yolu": "/Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv"
+    "veri_yolu": "data/raw/alarms.csv"
   },
   "ai_kullanimi": {
     "platform": "GitHub Copilot Chat",
@@ -48,7 +48,7 @@
   },
   "sunum": {
     "demo_akisi": [
-      "Web panelini python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000 komutuyla ac",
+      "Web panelini python3 src/app.py --port 8000 komutuyla ac",
       "Ust metriklerde 3.000 alarm ve 7 olay kartini goster",
       "Ilk olay kartinda kok hipotezi, kanitlar ve karsi olasiliklari incele",
       "Kart icindeki grup bolumunde ayni korelasyona ait alarm satirlarini ve servis alt gruplarini goster",

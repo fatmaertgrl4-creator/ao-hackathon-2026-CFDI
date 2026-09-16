@@ -17,13 +17,13 @@ Ana giriş noktası: [app.py](app.py)
 Web paneli:
 
 ```bash
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000
+python3 src/app.py --port 8000
 ```
 
 JSON analiz:
 
 ```bash
-python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json
+python3 src/app.py --json
 ```
 
 ## Ana Bileşenler

@@ -6,6 +6,9 @@ Bu dosya, bu Copilot Chat oturumunda kullanıcı tarafından verilen ana promptl
 **Tarih:** 2026-09-16  
 **Saat dilimi:** Türkiye saati (`UTC+03:00`)  
 **Saat kaynağı:** İlk üç prompt yerel Copilot session store kayıtlarından UTC olarak alınıp `UTC+03:00` saatine çevrildi. Son prompt, oturum henüz kapanmadan kaydedildiği için sistem saatinden alındı.
+**Araç:** GitHub Copilot Chat  
+**VS Code Copilot extension sürümü:** 0.65.0  
+**VS Code sürümü:** 1.137.0
 
 ## 1. İlk Uygulama İsteği
 
@@ -119,12 +122,66 @@ Bu prompt, teslimat metadatasındaki eksik alanların kapatılmasını istedi. K
 - [../../AI_JURI.md](../../AI_JURI.md)
 - [prompts.md](prompts.md)
 
+## 6. Fazlar, İndirgeme Oranı ve UI Metin Güncellemesi
+
+**Saat:** 16:26:58
+
+**Prompt:**
+
+```text
+docs/fazlar.md dosyasını mevcut final repository durumuyla karşılaştır.
+
+Yalnız gerçekten tamamlandığını repository üzerinden doğrulayabildiğin
+maddeleri [x] yap.
+
+Gerçekten tamamlanmamış maddeleri işaretleme.
+Eski hazırlık durumlarını final proje durumu gibi bırakma.
+
+Faz 3 ve Faz 4 durumlarını da gerçek mevcut duruma göre güncelle.
+
+Başka hiçbir dosyaya dokunma. src/app.py içinde mevcut confidence hesaplamasını değiştirme.
+
+Yalnız kullanıcı arayüzündeki "güven %..." ifadesini,
+istatistiksel olasılık izlenimi vermeyecek şekilde
+"heuristik kanıt skoru .../100" olarak değiştir.
+
+Mevcut hesaplama, API ve korelasyon davranışını bozma.
+
+Sonra gerçek syntax testi çalıştır. README.md, AI_JURI.md ve submission.json içindeki indirgeme oranı
+ifadelerini karşılaştır.
+
+Hesaplamayı değiştirme:
+7 / 3000 = 0.00233 = yaklaşık %0.23.
+
+İnsan tarafından okunan metinlerde bunu
+"%0,23 (7 / 3000)" şeklinde anlaşılır hale getir.
+
+submission.json içinde sayısal değer gerekiyorsa geçerli numeric JSON
+değerini koru.
+
+Başka metriği değiştirme. bu değişiklikleri yaparken prompts.mdye bu promptu yaz ve commitle ve githuba pushla
+```
+
+**Jüri için kısa yorum:**
+
+Bu prompt, final repo durumuyla faz takibinin gerçekten hizalanmasını istedi. Kullanıcı yalnızca repository üzerinden doğrulanabilen checklist maddelerinin işaretlenmesini, faz durumlarının mevcut gerçeğe göre güncellenmesini, UI'daki güven ifadesinin istatistiksel olasılık izlenimi vermeyecek şekilde yeniden adlandırılmasını ve indirgeme oranı metninin insan tarafından daha anlaşılır hale getirilmesini talep etti. İstenen kapsam dışında korelasyon hesabına veya API davranışına dokunulmadı.
+
+**Repository kanıtı:**
+
+- [../../docs/fazlar.md](../../docs/fazlar.md)
+- [../../src/app.py](../../src/app.py)
+- [../../README.md](../../README.md)
+- [../../AI_JURI.md](../../AI_JURI.md)
+- [../../submission.json](../../submission.json)
+- [prompts.md](prompts.md)
+
 ## Özet
 
-Bu oturumdaki promptlar, çözümün beş ana gelişim aşamasını gösterir:
+Bu oturumdaki promptlar, çözümün altı ana gelişim aşamasını gösterir:
 
 1. Senaryo gereksinimlerine uygun ilk korelasyon uygulaması.
 2. Bağımlılık/envanter verisiyle zenginleştirilmiş grup alarm ekranı.
 3. İndirgeme oranını iyileştiren, yanlış birleştirme riskini sınırlayan konsolidasyon.
 4. AI kullanım kanıtlarının kaydedilmesi ve GitHub'a gönderim hazırlığı.
 5. Submission metadata, sürüm bilgileri ve final dokümanlarının senkronize edilmesi.
+6. Faz durumlarının gerçek repo kanıtlarıyla hizalanması ve UI / metin netleştirmeleri.

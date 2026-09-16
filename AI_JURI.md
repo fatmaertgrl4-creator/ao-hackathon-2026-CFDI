@@ -71,7 +71,7 @@ Kartlara atanamayan alarmlar `noise_audit` altında nedenleriyle listelenir.
 |---|---:|---|
 | İşlenen alarm | 3.000 | CSV satır sayısı |
 | Olay kartı | 7 | `summary.event_cards` |
-| İndirgeme oranı | 0,00233 | `7 / 3000` |
+| İndirgeme oranı | %0,23 (7 / 3000) | `7 / 3000` |
 | Gürültü / izleme adayı | 1.755 | `summary.noise_count` |
 | İlk karttaki grup alarmı | 391 | İlk olay kartındaki `grouped_alarms` sayısı |
 | Aksiyon durum doğrulaması | Başarılı | `ACT-01` durumu HTTP API ile `inceleniyor` yapıldı |

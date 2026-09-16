@@ -67,7 +67,7 @@ python3 src/app.py --json
 |---|---:|---|
 | İşlenen alarm | 3.000 | CSV satır sayısı |
 | Üretilen olay kartı | 7 | Korelasyon çıktısındaki `event_cards` sayısı |
-| İndirgeme oranı | 0,00233 | `7 / 3000` |
+| İndirgeme oranı | %0,23 (7 / 3000) | `7 / 3000` |
 | Gürültü / izleme adayı | 1.755 | Olay kartına atanmayıp denetim görünümüne alınan alarmlar |
 | İlk karttaki grup alarmı | 391 | İlk olay kartının `grouped_alarms` sayısı |
 

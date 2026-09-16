@@ -24,7 +24,7 @@ python3 src/app.py --port 8000
 
 **Amaç:** Alarm selinin karar verilebilir kartlara indiğini göstermek.
 
-**Gösterilecek:** Üst metriklerde 3.000 alarm, 7 olay kartı ve 0,00233 indirgeme oranı.
+**Gösterilecek:** Üst metriklerde 3.000 alarm, 7 olay kartı ve %0,23 (7 / 3000) indirgeme oranı.
 
 **Anlatılacak:** İlk kart `dc1/rack-A` ağ problemi hipotezini, etkilenen servisleri, baskın alarm tiplerini ve karşı olasılıkları gösterir.
 
@@ -74,4 +74,10 @@ curl -s -X POST http://127.0.0.1:8000/api/actions/ACT-01 \
 
 ## 4. Ekran Görüntüleri
 
-Bu çalışma sırasında ekran görüntüsü üretilmedi. Final sunumdan önce gerçek çalışan panelden ekran görüntüleri eklenmelidir.
+Bu çalışma sırasında gerçek çalışan panelden aşağıdaki ekran görüntüleri kaydedildi:
+
+1. `01-dashboard.png`
+2. `02-event-detail.png`
+3. `03-correlation-group.png`
+4. `04-noise-audit.png`
+5. `05-action-status.png`

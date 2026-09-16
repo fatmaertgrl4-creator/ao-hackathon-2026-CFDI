@@ -194,9 +194,34 @@ Bu prompt, repoda bulunan fakat bu geliştirme sürecinde aktif kullanılmayan h
 - [../../AI_JURI.md](../../AI_JURI.md)
 - [prompts.md](prompts.md)
 
+## 8. Demo ve Final Repo Temizliği
+
+**Saat:** 16:44:04
+
+**Prompt:**
+
+```text
+1. `demo/README.md`** kesin düzelmeli.** Şu an dosyada “Bu çalışma sırasında ekran görüntüsü üretilmedi” yazıyor ama `demo/` altında 5 tane gerçek ekran görüntüsü mevcut. Bu doğrudan çelişki.
+2. **Veri yolu anlatımını tekleştirin.** `submission.json` varsayılan yolu `data/raw/alarms.csv` olarak veriyor. Kod da önce `data/raw/alarms.csv`, sonra `data/alarms.csv` arıyor; yani teknik olarak ikisini destekliyor. README ise ağırlıklı olarak `data/alarms.csv` anlatıyor. Hata değil ama jüri için gereksiz belirsizlik. README'ye “önerilen yol `data/raw/...`; alternatif olarak `data/...` da desteklenir” yazın.
+3. `docs/fazlar.md`** final durumuna getirilmeli.** Şu anda hâlâ `Faz 3 — devam ediyor`, `Faz 4 — devam ediyor`; ayrıca “repo public”, “demo uçtan uca test edildi”, “final commit”, “final push” gibi maddeler boş. Repo public olduğunu ben doğruladım; ekran görüntülerinin de eklendiği zaten görülüyor. Finalden önce gerçek olan maddeleri işaretleyin, olmayanları zorla tamamlamayın.
+4. **Gereksiz test dosyasını değerlendirin.** Root'ta hâlâ `ElifTest.txt` var. Jüri açısından faydası yoksa final repoda bırakmazdım. Daha önceki commit geçmişinde test amacı zaten iz bırakmış durumda; final görünümünün temiz olması daha iyi.
+5. **Demo kanıtlarını isimlendirin.** Şu an isimler `CFDI Alarm Korelasyon.png`, `_Action`, `_Noise`, `_Statu`, `_sub` şeklinde. Çalışıyor ama jüri için `01-dashboard.png`, `02-event-detail.png`, `03-correlation-group.png`, `04-noise-audit.png`, `05-action-status.png` gibi sıralı isimler çok daha profesyonel olur. bu değişiklikleri de yap ama asla ana kodu app.py'ı data'yı vs değiştirme buradaki reponun en son halini diğer dosyalarda koru. bu promptu prompts.md içerisine ekle ve githuba commit edip pushla
+```
+
+**Jüri için kısa yorum:**
+
+Bu prompt, final repo görünümündeki dokümantasyon ve demo çelişkilerinin temizlenmesini istedi. Kullanıcı özellikle ekran görüntüsü kanıtı ile `demo/README.md` arasındaki çelişkinin giderilmesini, veri yolu anlatımının jüri için netleştirilmesini, `docs/fazlar.md` içindeki yalnızca gerçekten doğrulanabilen final maddelerinin işaretlenmesini, gereksiz test dosyasının değerlendirilmesini ve demo ekran görüntülerinin daha profesyonel adlarla yeniden düzenlenmesini talep etti. Ana uygulama koduna ve veri dosyalarına dokunulmadan repo temizliği hedeflendi.
+
+**Repository kanıtı:**
+
+- [../../demo/README.md](../../demo/README.md)
+- [../../README.md](../../README.md)
+- [../../docs/fazlar.md](../../docs/fazlar.md)
+- [prompts.md](prompts.md)
+
 ## Özet
 
-Bu oturumdaki promptlar, çözümün yedi ana gelişim aşamasını gösterir:
+Bu oturumdaki promptlar, çözümün sekiz ana gelişim aşamasını gösterir:
 
 1. Senaryo gereksinimlerine uygun ilk korelasyon uygulaması.
 2. Bağımlılık/envanter verisiyle zenginleştirilmiş grup alarm ekranı.
@@ -205,3 +230,4 @@ Bu oturumdaki promptlar, çözümün yedi ana gelişim aşamasını gösterir:
 5. Submission metadata, sürüm bilgileri ve final dokümanlarının senkronize edilmesi.
 6. Faz durumlarının gerçek repo kanıtlarıyla hizalanması ve UI / metin netleştirmeleri.
 7. Kullanılmayan Claude odaklı hazırlık yapılarının dokümantasyonda netleştirilmesi.
+8. Demo kanıtları, veri yolu anlatımı ve final repo görünümünün temizlenmesi.

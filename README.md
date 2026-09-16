@@ -33,11 +33,19 @@ Detaylı mimari: [docs/mimari.md](docs/mimari.md)
 - Harici Python paketi gerekmez.
 - Resmi veri paketindeki `alarms.csv` dosyası gerekir.
 
-Veri dosyaları için iki yol desteklenir:
+Veri dosyaları için önerilen varsayılan yol:
 
-- `data/alarms.csv` içine koymak
-- `data/service_dependencies.csv` ve `data/host_inventory.csv` içine ek veri dosyalarını koymak
-- Komutta `--data /dosya/yolu/alarms.csv` vermek
+- `data/raw/alarms.csv`
+- `data/raw/service_dependencies.csv`
+- `data/raw/host_inventory.csv`
+
+Alternatif olarak aşağıdaki yol da desteklenir:
+
+- `data/alarms.csv`
+- `data/service_dependencies.csv`
+- `data/host_inventory.csv`
+
+İstenirse komutta `--data /dosya/yolu/alarms.csv` da verilebilir.
 
 ### Çalıştırma
 

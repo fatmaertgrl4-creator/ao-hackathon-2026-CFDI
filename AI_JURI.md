@@ -1,18 +1,7 @@
 # AI Jüri Özeti
 
-> **DURUM: TASLAK — final teslim için henüz hazır değildir.**
->
-> Senaryo henüz açıklanmadığı için çözüme özel alanlar `TODO` olarak bırakılmıştır.
-> Senaryo ve veri paketi paylaşıldıktan sonra bu alanlar yalnızca gerçek çözüm,
-> doğrulanmış sonuçlar ve repository içerisinde gösterilebilen kanıtlarla güncellenecektir.
->
-> Bu dokümandaki önemli iddialar gerçek dosya, kod, çıktı veya ölçüm kanıtıyla desteklenmelidir.
-> Var olmayan dosya, özellik, metrik veya satır aralığı referans olarak verilmemelidir.
-
 **Takım:** CFDI  
 **Repo:** https://github.com/fatmaertgrl4-creator/ao-hackathon-2026-CFDI
-
----
 
 ## 1. AI Stratejimiz ve İş Akışı
 
@@ -20,275 +9,137 @@
 
 | Araç / Platform | Model | Sürüm | Kullanım Amacı |
 |---|---|---|---|
-| SAKA | TODO | TODO | TODO |
-| TODO | TODO | TODO | TODO |
+| GitHub Copilot Chat | GitHub Copilot | Bu oturumda doğrulanmadı | Senaryo analizi, algoritma taslağı, kod geliştirme ve dokümantasyon desteği |
 
-> Final durumda yalnızca gerçekten kullanılan araçlar, gerçek model adları ve doğrulanmış sürümler yer almalıdır.
+SAKA bu uygulama geliştirme adımında çalışan ürün içine entegre edilmedi. Final teslimde SAKA kullanılırsa model adı ve sürümü ayrıca doğrulanmalıdır.
 
 ### AI'ı Nasıl Kullandık?
 
-TODO — AI'ın gerçekten kullanıldığı aşamaları ve her aşamada ne amaçla kullanıldığını somut şekilde açıklayın.
+AI, senaryo gereksinimlerini uygulanabilir bileşenlere çevirmek, korelasyon yaklaşımını şekillendirmek, Python uygulamasını üretmek ve dokümantasyonu gerçek doğrulama çıktılarıyla güncellemek için kullanıldı.
 
-Olası kullanım alanları:
-
-- Problem analizi ve planlama
-- Veri keşfi
-- Hipotez üretimi ve değerlendirilmesi
-- Kod geliştirme desteği
-- Hata ayıklama
-- Test senaryosu üretimi
-- Sonuçların açıklanması
-- Gerektiğinde model karşılaştırması
-
-> Final durumda yalnızca gerçekten gerçekleştirilen AI kullanım adımları bırakılmalıdır.
+Ürün içinde canlı LLM çağrısı yoktur; nihai olay kartları deterministik korelasyon algoritmasıyla üretilir.
 
 ### İnsan – AI İş Bölümü
 
-TODO — AI'ın yaptığı işleri ve kritik insan kararlarını açıklayın.
-
-Örnek yapı:
-
 | Aşama | AI'ın Rolü | İnsan Kararı / Doğrulaması |
 |---|---|---|
-| Problem analizi | Hipotez ve alternatif üretmek | Problemi ve yaklaşımı doğrulamak |
-| Veri keşfi | İncelenebilecek sinyalleri önermek | Sinyalleri gerçek veride doğrulamak |
-| Kodlama | Kod taslağı veya öneri üretmek | Kodu incelemek ve çalıştırmak |
-| Test | Test senaryoları önermek | Sonuçları doğrulamak |
-| Sonuç | Açıklama taslağı üretmek | Nihai yorumu ve kanıtı onaylamak |
+| Problem analizi | Zorunlu ve bonus gereksinimleri bileşenlere ayırmak | Senaryonun gerçek hedefini onaylamak |
+| Veri keşfi | İncelenecek sinyalleri önermek | 3.000 satır, alarm tipleri ve kritik lokasyon yoğunluğunu komutla doğrulamak |
+| Kodlama | Korelasyon uygulamasını ve web panelini üretmek | Komutları çalıştırıp çıktıyı kontrol etmek |
+| Test | JSON ve HTTP doğrulama komutlarını çalıştırmak | 7 kart ve aksiyon durum değişikliğini doğrulamak |
+| Dokümantasyon | Gerçek metriklerle doküman taslağı oluşturmak | Final takım bilgisi ve model sürümü gibi doğrulanmamış alanları ayırmak |
 
 ### İş Akışımız
 
-TODO — Gerçekte uygulanan AI destekli çalışma akışını kısa ve açık şekilde anlatın.
-
-Örnek yapı:
-
-**Problem tanımlama → veri keşfi → hipotezler → yaklaşım seçimi → geliştirme → test → açıklama → doğrulama**
-
-> **Önemli:** “AI ile kod yazdık” tek başına yeterli bir açıklama değildir.
-> AI'ın hangi görevde ne ürettiği, ekibin bu çıktıyı nasıl değerlendirdiği
-> ve son kararın nasıl doğrulandığı açıklanmalıdır.
+Senaryo okundu, veri formatı incelendi, kök aday skoru ve korelasyon eşiği seçildi, küçük bir Python uygulaması geliştirildi, JSON ve HTTP çıktıları doğrulandı, ardından dokümantasyon gerçek ölçümlerle güncellendi.
 
 ### Kanıt
 
-- [`prompts/`](prompts/)
-- [`CLAUDE.md`](CLAUDE.md)
-- [`docs/plan.md`](docs/plan.md)
-- TODO — yarışma sırasında oluşan diğer gerçek kanıt yolları
-
----
+- [src/app.py](src/app.py)
+- [docs/plan.md](docs/plan.md)
+- [docs/mimari.md](docs/mimari.md)
+- [prompts/used/2026-09-16-korelasyon-uygulamasi.md](prompts/used/2026-09-16-korelasyon-uygulamasi.md)
 
 ## 2. Problemi Nasıl Çözdük
 
 ### Problem ve Yaklaşım
 
-TODO — Problemi nasıl anladığımızı, nasıl parçaladığımızı ve neden seçilen yaklaşımı kullandığımızı açıklayın.
+S-A1 senaryosunda alarm sayısından çok alarm ilişkileri görünmez durumdaydı. Çözüm, tüm alarm akışını okuyup kök neden hipotezi etrafında gruplanmış olay kartları üretir.
 
-Aşağıdaki sorular cevaplanmalıdır:
-
-- Problem neydi?
-- Operasyon / SRE açısından etkisi neydi?
-- Hangi veri ve sinyalleri inceledik?
-- Hangi hipotezleri değerlendirdik?
-- Hangi yaklaşımı seçtik?
-- Bu yaklaşımı neden seçtik?
-- Hangi varsayımlar doğrulandı, hangileri elendi?
-
-Doğrulanmamış hipotezler gerçek nedenmiş gibi sunulmamalıdır.
+Seçilen yaklaşım kural tabanlı ve açıklanabilir korelasyondur. Kök adayları alarm tipi, şiddet, yerel yoğunluk ve zaman sırasına göre skorlanır. Diğer alarmlar servis, lokasyon, zaman ve hedef servis bağına göre kartlara atanır.
 
 ### Çalışan Çözüm
 
-TODO — Gerçekte geliştirilen çözümün uçtan uca nasıl çalıştığını anlatın.
+Uygulama `src/app.py` üzerinden çalışır. Aynı giriş noktası hem JSON analiz hem de web paneli sunar.
 
-Açıklanabilecek noktalar:
+Her olay kartında şu alanlar bulunur:
 
-- Sistem hangi girdileri alıyor?
-- Veriyi nasıl işliyor?
-- Hangi analizleri gerçekleştiriyor?
-- AI hangi noktada ve hangi amaçla kullanılıyor?
-- Kullanıcıya hangi çıktıları veriyor?
-- Sonuçların gerekçesi veya kanıtı nasıl gösteriliyor?
+- Kök neden hipotezi
+- Etkilenen servisler
+- Alarm sayısı
+- Zaman aralığı
+- Açıklama ve kanıt
+- Karşı olasılıklar
+- Önerilen aksiyon
+- Aksiyon sahibi ve durum
 
-Final açıklama gerçek `src/` içeriğiyle uyumlu olmalıdır.
+Kartlara atanamayan alarmlar `noise_audit` altında nedenleriyle listelenir.
 
 ### Ölçtüğümüz Sonuçlar
 
-TODO — Yalnızca gerçekten ölçülmüş sonuçları ekleyin.
-
 | Metrik | Sonuç | Ölçüm / Hesaplama Yöntemi |
 |---|---:|---|
-| TODO — Gerçekten ölçülen metrik | TODO | TODO |
-| TODO — Gerçekten ölçülen metrik | TODO | TODO |
-| TODO — Gerçekten ölçülen metrik | TODO | TODO |
-
-> **Önemli:**
->
-> “Hızlı”, “başarılı”, “yüksek doğruluk” gibi ifadeler yalnızca ölçümle desteklenebiliyorsa kullanılmalıdır.
->
-> Ölçülmeyen veya hesaplanamayan bir değer metrik olarak sunulmamalıdır.
+| İşlenen alarm | 3.000 | CSV satır sayısı |
+| Olay kartı | 7 | `summary.event_cards` |
+| İndirgeme oranı | 0,00233 | `7 / 3000` |
+| Gürültü / izleme adayı | 1.755 | `summary.noise_count` |
+| İlk karttaki grup alarmı | 391 | İlk olay kartındaki `grouped_alarms` sayısı |
+| Aksiyon durum doğrulaması | Başarılı | `ACT-01` durumu HTTP API ile `inceleniyor` yapıldı |
 
 ### Kanıt
 
-- [`src/`](src/)
-- [`docs/mimari.md`](docs/mimari.md)
-- [`demo/`](demo/)
-- TODO — ölçüm veya çıktıların bulunduğu gerçek dosya / dosyalar
-
----
+- Ek veri okuma: [src/app.py](src/app.py#L140-L177)
+- Korelasyon çekirdeği: [src/app.py](src/app.py#L277-L371)
+- Grup alarm ve açıklama üretimi: [src/app.py](src/app.py#L508-L601)
+- Gürültü denetimi: [src/app.py](src/app.py#L604-L625)
+- Web/API: [src/app.py](src/app.py#L663-L1019)
 
 ## 3. X-Factor
 
 ### X-Factor'ımız
 
-TODO — Çözümümüzü standart bir analiz, dashboard veya veri görüntüleme yaklaşımından ayıran en güçlü AI destekli özelliği açıklayın.
+Açıklanabilir korelasyon ve gürültü denetimini aynı operasyon panelinde birleştirmek. Kart sadece sonuç vermez; neden bu kökün seçildiğini, hangi karşı olasılıkların bulunduğunu ve hangi alarmların neden dışarıda kaldığını gösterir.
 
-Final durumda burada mümkün olduğunca **tek ve net bir X-Factor** anlatılmalıdır.
-
-> **Önemli:**
->
-> “AI kullanıyoruz” tek başına X-Factor değildir.
-> Özellik gerçek çözümde çalışmalı ve somut kanıtla gösterilebilmelidir.
+Kart içinde aynı korelasyon grubundaki alarm satırları servis alt gruplarıyla birlikte açılır bölümde gösterilir. `service_dependencies.csv` bağımlılık etkisini, `host_inventory.csv` servis ve host kritikliğini zenginleştirir.
 
 ### Neden Değer Katıyor?
 
-TODO — Bu özelliğin probleme hangi ek değeri sağladığını açıklayın.
-
-Aşağıdaki sorular yardımcı olabilir:
-
-- Kullanıcıya hangi yeni kabiliyeti sağlıyor?
-- Operasyonel karar vermeyi nasıl kolaylaştırıyor?
-- AI burada neden anlamlı bir rol oynuyor?
-- Üretilen sonuç nasıl açıklanabiliyor veya doğrulanabiliyor?
-- Demo sırasında bu değer nasıl gösterilecek?
-
-AI kullanılmasının tek başına değer olduğu varsayılmamalıdır.
+Nöbetçi mühendis, tek bir kart başlığına güvenmek zorunda kalmaz. Kanıt ve karşı olasılıkları aynı ekranda görerek ilk müdahale adımını daha kontrollü seçebilir. Gürültü denetimi, elenen alarmların görünmez hale gelmesini engeller.
 
 ### Kod Kanıtı
 
 ```text
-src/<gerçek_dosya_adı>:<gerçek_satır_aralığı>
+src/app.py:140-177
+src/app.py:277-371
+src/app.py:508-625
+src/app.py:663-1019
 ```
 
 ### Çıktı / Demo Kanıtı
 
 ```text
-TODO — demo/<gerçek_dosya_veya_ekran_görüntüsü>
+python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json
+GET http://127.0.0.1:8000/api/analysis
+POST http://127.0.0.1:8000/api/actions/ACT-01
 ```
-
-> **Önemli:** Dosya adı ve satır aralığı final commit üzerinden doğrulanmalıdır.
-> Tahmini, eski veya var olmayan referans kullanılmamalıdır.
-
----
 
 ## 4. Çalıştırma
 
 ### Ön Koşullar
 
-TODO — Gerçekte kullanılan teknoloji ve bağımlılıklara göre güncelleyin.
-
-Örnek:
-
 - Python 3.11+
-- ve/veya Node.js 20+
-- Gerekli bağımlılıklar
-- Gerekli ortam değişkenleri
-
-### Kurulum
-
-```bash
-TODO
-```
+- Resmi veri paketindeki `alarms.csv`
+- Harici paket gerekmez
 
 ### Tek Komut
 
 ```bash
-TODO
+python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000
 ```
 
 ### Beklenen Çıktı
 
-TODO — Komut çalıştırıldığında kullanıcının veya jürinin ne göreceğini açık şekilde yazın.
+Terminalde aşağıdaki adres görünür:
 
-Örneğin:
+```text
+Alarm korelasyon paneli: http://127.0.0.1:8000
+```
 
-- Web arayüzünün açılacağı adres
-- Terminalde görülecek başlangıç mesajı
-- Oluşacak çıktı veya rapor
-- Demo için izlenecek ilk adım
-
-> **Önemli:** Final çalıştırma komutu:
->
-> - `README.md`
-> - `AI_JURI.md`
-> - `submission.json` → `calistirma.komut`
->
-> içerisinde aynı olmalıdır.
->
-> Final teslimden önce kurulum ve çalıştırma adımları gerçekten test edilmelidir.
-
-### Kanıt
-
-- [`README.md`](README.md)
-- [`.env.example`](.env.example)
-- TODO — gerçek dependency / requirements dosyası
-- TODO — gerekiyorsa gerçek entry-point dosyası
-
----
+Tarayıcıda 3.000 alarm, 7 olay kartı, gürültü denetimi ve aksiyon durum kontrolleri görünür.
 
 ## 5. Bilinen Sınırlar
 
-TODO — Çözümün yapamadığı, sınırlı kaldığı veya henüz doğrulanamayan noktaları açık şekilde belirtin.
-
-Önerilen format:
-
-### Sınır 1
-
-**Sınırlı Kalan Nokta:** TODO  
-**Neden:** TODO  
-**Etkisi:** TODO  
-**Nasıl Geliştirilebilir:** TODO
-
-### Sınır 2
-
-**Sınırlı Kalan Nokta:** TODO  
-**Neden:** TODO  
-**Etkisi:** TODO  
-**Nasıl Geliştirilebilir:** TODO
-
-> **Önemli:**
->
-> Bilinen sınırlar gizlenmemeli ve çözüm gerçekte olduğundan daha kapsamlı gösterilmemelidir.
-> Yalnızca gerçekten bilinen veya gözlemlenen sınırlamalar yazılmalıdır.
->
-> Yarışma öncesi geçici notlar ve artık geçerli olmayan `TODO` alanları final teslimden önce temizlenmelidir.
-
-### Kanıt
-
-TODO — Her önemli sınır için mümkün olduğunda ilgili gerçek dosya, kod bölümü, test sonucu veya çıktı belirtilmelidir.
-
-Örnek format:
-
-```text
-src/<dosya>:<satır_aralığı>
-demo/<çıktı>
-docs/<ilgili_doküman>
-```
-
----
-
-## Final Kontrol
-
-Final teslimden önce:
-
-- [ ] Beş ana bölüm gerçek çözümle güncel
-- [ ] Tüm `TODO` alanları kontrol edilmiş
-- [ ] Kullanılan AI araçları ve model sürümleri doğrulanmış
-- [ ] İnsan – AI iş bölümü gerçek süreçle uyumlu
-- [ ] Kritik prompt kanıtları mevcut
-- [ ] Problem ve çözüm anlatımı gerçek kodla uyumlu
-- [ ] Metrikler gerçekten ölçülmüş
-- [ ] X-Factor tek, net ve kanıtlanabilir
-- [ ] X-Factor dosya / satır referansı final kod üzerinden doğrulanmış
-- [ ] Çalıştırma komutu README ve `submission.json` ile aynı
-- [ ] Çalıştırma adımları test edilmiş
-- [ ] Bilinen sınırlar güncel ve dürüst
-- [ ] Var olmayan dosya, özellik, metrik veya kanıt referansı bulunmuyor
+- Kök nedenler doğrulama etiketi olmadığı için hipotez olarak sunulur.
+- Aksiyon durumları kalıcı değildir; sunucu yeniden başlatıldığında sıfırlanır.
+- Çalışan üründe canlı LLM entegrasyonu yoktur.
+- Model sürümü ve final takım üyeleri ekip tarafından ayrıca doğrulanmalıdır.

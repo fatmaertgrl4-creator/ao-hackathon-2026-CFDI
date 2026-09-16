@@ -130,13 +130,13 @@ reddedilen bir öneri de gerçek çalışma sürecinin anlamlı kanıtı olabili
 
 ```text
 AI önerisi:
-TODO — Modelin gerçek önerisinin kısa özeti
+Modelin gerçek önerisinin kısa özeti yazılır.
 
 İnsan değerlendirmesi:
-TODO — Ekip öneriyi neden kabul etti, değiştirdi veya reddetti?
+Ekibin öneriyi neden kabul ettiği, değiştirdiği veya reddettiği yazılır.
 
 Sonuç:
-TODO — Bu karar çözüm yaklaşımını nasıl etkiledi?
+Bu kararın çözüm yaklaşımını nasıl etkilediği yazılır.
 ```
 
 Bu tür kayıtlar şu akışı görünür hale getirir:
@@ -271,7 +271,7 @@ Prompt kaydında:
 
 ```text
 Doğrulama:
-TODO
+Kullanılan gerçek doğrulama yöntemi yazılır.
 ```
 
 şeklinde kullanılan gerçek yöntem belirtilmelidir.

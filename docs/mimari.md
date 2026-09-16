@@ -1,482 +1,96 @@
 # Mimari
 
-> **Durum: TASLAK**
->
-> Bu doküman çözümün teknik mimarisini, ana bileşenlerini, veri ve karar akışını,
-> harici bağımlılıklarını ve önemli teknik kararlarını açıklamak için kullanılacaktır.
->
-> Senaryo henüz açıklanmadığı için çözüme özel alanlar `TODO` olarak bırakılmıştır.
-> Senaryo ve veri paketi paylaşılıp çözüm geliştirildikten sonra bu alanlar yalnızca
-> gerçek bileşenler, gerçek dosya yolları ve gerçekten kullanılan teknolojilerle güncellenecektir.
->
-> Bu dosya `AI_JURI.md` → **2. Problemi Nasıl Çözdük** bölümündeki
-> teknik yaklaşım ve çözüm mimarisi için kanıt olarak kullanılabilir.
-
----
-
 ## 1. Genel Mimari
 
-TODO — Çözümün uçtan uca nasıl çalıştığını kısa ve anlaşılır şekilde açıklayın.
+CFDI Alarm Korelasyon Paneli tek Python giriş noktasıyla çalışan, harici paket gerektirmeyen bir uygulamadır. Uygulama `alarms.csv` dosyasını toplu okur, alarmları kök adaylarına göre korele eder, olay kartları üretir ve sonuçları hem JSON API hem de web paneli üzerinden sunar.
 
-Aşağıdaki sorular cevaplanmalıdır:
-
-- Veri veya kullanıcı girdisi sisteme nasıl giriyor?
-- İlk olarak hangi bileşen tarafından işleniyor?
-- İşleme / analiz / karar akışı hangi aşamalardan geçiyor?
-- AI / LLM kullanılıyorsa hangi noktada ve hangi amaçla devreye giriyor?
-- Sonuç nasıl oluşturuluyor?
-- Sonuç nasıl doğrulanıyor?
-- Kullanıcı çıktıyı nerede veya hangi formatta görüyor?
-
-> **Önemli:** Mimari anlatımı yalnızca teknoloji isimlerinden oluşmamalıdır.
-> Verinin, kararların ve çıktının sistem içerisinde nasıl ilerlediği anlaşılmalıdır.
->
-> Final durumda yalnızca gerçekten geliştirilmiş akış anlatılmalıdır.
-
----
+```text
+[ alarms.csv + service_dependencies.csv + host_inventory.csv ]
+      |
+      v
+[ CSV okuma ve doğrulama ]
+      |
+      v
+[ Alarm zenginleştirme ]
+  - zaman
+  - şiddet
+  - servis
+  - lokasyon
+  - hedef servis
+  - servis bağımlılığı
+  - host / servis kritiklik bilgisi
+      |
+      v
+[ Kök aday skoru ]
+      |
+      v
+[ Korelasyon ve alarm atama ]
+      |
+      +--> [ Olay kartları ]
+      |
+      +--> [ Gürültü denetimi ]
+      |
+      v
+[ JSON API + Web paneli ]
+```
 
 ## 2. Veri ve Karar Akışı
 
-TODO — Gerçek çözüm oluşturulduktan sonra aşağıdaki şema gerçek mimariye göre güncellenecektir.
-
-Başlangıç şablonu:
-
-```text
-[ Veri / Kullanıcı Girdisi ]
-            |
-            v
-[ Girdi Doğrulama / Hazırlama ]
-            |
-            v
-[ Temel İşleme / Analiz ]
-            |
-            v
-[ Karar / Değerlendirme Katmanı ]
-            |
-            v
-[ Doğrulama / Kanıt ]
-            |
-            v
-[ Kullanıcı Çıktısı ]
-```
-
-AI gerçekten kullanılıyorsa ilgili noktaya ayrıca eklenebilir:
-
-```text
-[ Hazırlanmış Bağlam / Sinyaller ]
-              |
-              v
-[ AI / LLM ]
-              |
-              v
-[ Yapılandırılmış Çıktı ]
-              |
-              v
-[ Doğrulama / Kontrol ]
-```
-
-> **Not:** Bu şemalar yalnızca başlangıç şablonudur.
-> Kullanılmayan adımlar kaldırılmalı, gerçek çözümde bulunan bileşenler eklenmelidir.
->
-> AI kullanılmayan bir aşama sırf mimaride AI görünsün diye eklenmemelidir.
-
----
+1. `load_alarms` CSV dosyasını tamamen okur ve zorunlu kolonları doğrular.
+2. `parse_target_service` mesaj metninden hedef servisleri çıkarır. Örneğin `billing-service servisine yapılan çağrı zaman aşımına uğradı` gibi mesajlar bağımlılık ilişkisi olarak kullanılır.
+3. `classify_alarm` alarmı ağ, veritabanı, servis, runtime veya kaynak sınıfına ayırır.
+4. `root_score` yüksek şiddetli ve kök neden olma ihtimali yüksek alarm tiplerini öne çıkarır.
+5. `seed_clusters` en güçlü kök adaylarından en fazla 15 olay tohumu seçer.
+6. `correlation_score` her alarmın olay kartına yakınlığını zaman, servis, lokasyon, hedef servis ve servis bağımlılık bağıyla hesaplar.
+7. `assign_alarms` eşiği geçen alarmları kartlara atar.
+8. `consolidate_related_clusters` aynı kategori, aynı locus, aynı alarm ailesi ve çakışan/yakın pencere koşulunu sağlayan tekrar kartlarını birleştirir.
+9. `build_noise_audit` kartlara girmeyen alarmları nedenleriyle denetim listesine alır.
+10. `AppHandler` JSON API ve web panelini sunar.
 
 ## 3. Bileşenler
 
-Her ana bileşen için sorumluluk, gerçek kod konumu, girdi ve çıktı belirtilmelidir.
-
-### 3.1. TODO — Bileşen Adı
-
-**Sorumluluk:**  
-TODO — Bu bileşen ne yapıyor?
-
-**Kod Konumu:**  
-`src/TODO`
-
-**Girdi:**  
-TODO
-
-**Çıktı:**  
-TODO
-
-**Bağımlılıklar:**  
-TODO
-
-**AI Kullanımı:**  
-TODO — AI kullanılıyor mu? Kullanılıyorsa hangi somut görev için?
-
-**Doğrulama:**  
-TODO — Bu bileşenin doğru çalıştığı nasıl doğrulanıyor?
-
----
-
-### 3.2. TODO — Bileşen Adı
-
-**Sorumluluk:**  
-TODO
-
-**Kod Konumu:**  
-`src/TODO`
-
-**Girdi:**  
-TODO
-
-**Çıktı:**  
-TODO
-
-**Bağımlılıklar:**  
-TODO
-
-**AI Kullanımı:**  
-TODO
-
-**Doğrulama:**  
-TODO
-
----
-
-> **Önemli:** Final teslimde yalnızca gerçekten var olan bileşenler yazılmalıdır.
-> Dosya yolları final repository üzerinden doğrulanmalıdır.
-
----
+| Bileşen | Kod Konumu | Girdi | Çıktı | Doğrulama |
+|---|---|---|---|---|
+| CSV okuyucu | [src/app.py](../src/app.py) | `alarms.csv` | Sıralı alarm nesneleri | 3.000 satır okundu |
+| Ek veri okuyucu | [src/app.py](../src/app.py#L140-L177) | Bağımlılık ve envanter CSV'leri | Servis grafiği, host/servis kritikliği | API çıktısında ek veri yolları doğrulandı |
+| Kök aday seçimi | [src/app.py](../src/app.py#L277-L303) | Zenginleştirilmiş alarmlar | Olay tohumları | En fazla 15 aday sınırı korundu |
+| Korelasyon skoru | [src/app.py](../src/app.py#L306-L360) | Alarm + olay tohumu + bağımlılık grafiği | Skor | JSON çıktısı üretildi |
+| Alarm atama | [src/app.py](../src/app.py#L362-L371) | Tüm alarmlar + kartlar | Atanmış alarm kümesi | Olay ve gürültü toplamı 3.000 alarmı kapsıyor |
+| Tekrar kart konsolidasyonu | [src/app.py](../src/app.py#L376-L421) | Aynı kök ailesindeki tekrar kartları | Daha az ama gerekçeli kart | 15 kart 7 karta indirildi |
+| Olay kartı | [src/app.py](../src/app.py#L545-L601) | Korele alarm grubu | Kök hipotezi, servis listesi, grup alarm tablosu, zaman aralığı, aksiyon | API çıktısı doğrulandı |
+| Gürültü denetimi | [src/app.py](../src/app.py#L604-L625) | Atanmayan alarmlar | Nedenli denetim listesi | 1.755 gürültü adayı listelendi |
+| Web/API | [src/app.py](../src/app.py#L663-L1019) | HTTP istekleri | Dashboard, grup alarm görünümü, analiz API, aksiyon API | `curl` ile doğrulandı |
 
 ## 4. AI / LLM Entegrasyonu
 
-TODO — AI / LLM gerçekten kullanılıyorsa mimari içerisindeki görevi açıklanacaktır.
+Çalışan ürün içinde canlı LLM veya harici AI API çağrısı yoktur. AI bu geliştirme sürecinde GitHub Copilot Chat olarak kullanıldı: senaryo gereksinimlerinin çözüme çevrilmesi, algoritma tasarımı, kod üretimi ve dokümantasyon taslağı için destek verdi.
 
-Aşağıdaki bilgiler mümkün olduğunca net verilmelidir:
+Model çıktıları doğrudan gerçek kabul edilmedi; uygulama `python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --json` ve HTTP API kontrolleriyle doğrulandı.
 
-- AI hangi bileşen veya aşamada çağrılıyor?
-- AI'a hangi veri veya bağlam gönderiliyor?
-- Ham veri mi, özetlenmiş veri mi gönderiliyor?
-- Modelden hangi tür çıktı bekleniyor?
-- Çıktı yapılandırılmış bir formatta mı alınıyor?
-- Model çıktısı doğrudan mı kullanılıyor?
-- Çıktı üzerinde doğrulama veya kontrol yapılıyor mu?
-- Nihai karar AI, insan, deterministik kod veya bunların kombinasyonu tarafından mı oluşturuluyor?
-- Hatalı / eksik AI çıktısı nasıl ele alınıyor?
-- Açıklanabilirlik gerekiyorsa nasıl sağlanıyor?
+## 5. Açıklanabilirlik / XAI Akışı
 
-Örnek mimari desen:
+Her olay kartı şu yapıda üretilir:
 
 ```text
-[ Doğrulanmış Veri / Analiz Sonucu ]
-                  |
-                  v
-[ Prompt / Context Hazırlama ]
-                  |
-                  v
-[ AI / LLM ]
-                  |
-                  v
-[ Yapılandırılmış Yanıt ]
-                  |
-                  v
-[ Doğrulama / Kontrol ]
-                  |
-                  v
-[ Kullanılabilir Sonuç ]
-```
-
-> **Önemli:** “LLM kullanıldı” tek başına yeterli değildir.
-> Modelin hangi gerçek görevi üstlendiği ve çıktısının nasıl doğrulandığı açıklanmalıdır.
->
-> AI / LLM çözümün mimarisinde kullanılmıyorsa bu bölümde açıkça belirtilmelidir.
-
----
-
-## 5. Açıklanabilirlik — XAI Akışı
-
-TODO — Çözüm bir karar, tespit, sınıflandırma, önceliklendirme veya öneri üretiyorsa
-bu sonucun kullanıcıya nasıl açıklandığı belirtilecektir.
-
-Temel yaklaşım:
-
-```text
-SONUÇ
+KÖK NEDEN HİPOTEZİ
   +
-NEDEN
+GEREKÇE
   +
 KANIT
+  +
+KARŞI OLASILIKLAR
+  +
+AKSİYON
 ```
 
-Gerekli olduğunda daha ayrıntılı yapı:
+Bu yaklaşımda korelasyon nedensellik olarak kesinleştirilmez. Kart başlıkları hipotezdir; kanıt bölümünde baskın alarm tipleri, alarm sayısı, etkilenen servisler, lokasyon ve örnek alarm ID'leri gösterilir.
 
-```text
-RESULT
-  |
-REASON
-  |
-EVIDENCE
-  |
-CONFIDENCE / UNCERTAINTY
-  |
-NEXT CHECK
-```
+## 6. Harici Bağımlılıklar
 
-Örnek yaklaşım:
+Harici paket, MCP sunucusu, harici API veya kalıcı veritabanı kullanılmadı. Uygulama Python standart kütüphanesiyle çalışır.
 
-```text
-Sonuç:
-Belirli bir kayıt veya bileşen öncelikli olarak değerlendirildi.
+## 7. Bilinen Mimari Sınırlar
 
-Neden:
-Analiz sırasında ilgili kriterlerde anlamlı bir değişim gözlemlendi.
-
-Kanıt:
-Sonucu destekleyen gerçek ölçüm veya veri noktaları gösterildi.
-```
-
-> **Önemli:** Final örnekleri yalnızca gerçek veriye ve gerçekten üretilen sinyallere dayanmalıdır.
-> Model tarafından üretilen fakat kanıtlanamayan gerekçeler kullanılmamalıdır.
-> Korelasyon doğrudan nedensellik olarak sunulmamalıdır.
-
----
-
-## 6. Veri Modeli
-
-TODO — Çözümde gerçekten kullanılan temel veri yapıları açıklanacaktır.
-
-| Varlık / Veri | Açıklama | Kaynak | Önemli Alanlar |
-|---|---|---|---|
-| TODO | TODO | TODO | TODO |
-| TODO | TODO | TODO | TODO |
-
-Varsa veri ilişkileri:
-
-```text
-TODO
-```
-
-### Veri Kalitesi
-
-Gerekliyse aşağıdaki konular açıklanabilir:
-
-- Eksik değerler
-- Geçersiz alanlar
-- Veri tipi problemleri
-- Zaman alanlarının tutarlılığı
-- Tekrarlayan kayıtlar
-- Veri kapsamının sınırları
-
-> **Not:** Karmaşık bir veri modeli yoksa bu bölüm kısa tutulabilir.
-> Gerçekte bulunmayan tablo, alan veya varlık eklenmemelidir.
-
----
-
-## 7. Girdiler ve Çıktılar
-
-### Girdiler
-
-TODO — Sistemin gerçekten aldığı girdiler açıklanacaktır.
-
-Örnek olabilecek formatlar:
-
-- CSV
-- JSON
-- Log kayıtları
-- Metrik verileri
-- Olay / event kayıtları
-- Kullanıcı girdisi
-
-**Veri Yolu:**  
-`TODO`
-
-> **Not:** Final veri yolu `submission.json` → `calistirma.veri_yolu` alanı ile uyumlu olmalıdır.
-
-### Çıktılar
-
-TODO — Sistemin gerçekten ürettiği çıktılar açıklanacaktır.
-
-Örnek olabilecek çıktı türleri:
-
-- Analiz sonucu
-- Önceliklendirilmiş kayıtlar
-- Hipotez
-- Açıklama
-- Öneri
-- Rapor
-- Görselleştirme
-- Web arayüzü
-- Yapılandırılmış JSON çıktısı
-
-> Final durumda yalnızca gerçekten üretilen çıktılar bırakılmalıdır.
-
----
-
-## 8. Harici Bağımlılıklar
-
-| Servis / Araç | Kullanım Amacı | Kimlik Doğrulama | Yapılandırma |
-|---|---|---|---|
-| TODO | TODO | TODO | TODO |
-
-Harici bağımlılık yoksa final durumda:
-
-> Bu çözümde harici servis bağımlılığı bulunmamaktadır.
-
-AI platformu veya başka bir dış servis kullanılıyorsa gerçek kullanım burada belirtilmelidir.
-
-> **Önemli:** API key, token, parola, connection string veya gerçek credential değerleri
-> bu dosyaya yazılmamalıdır.
->
-> Gerekli yapılandırmalar yalnızca değişken isimleri üzerinden açıklanmalıdır.
-> Gerçek gizli değerler repository içerisinde tutulmamalıdır.
-
----
-
-## 9. Kullanılan Teknolojiler
-
-| Teknoloji / Araç | Kullanım Amacı |
-|---|---|
-| TODO | TODO |
-| TODO | TODO |
-
-Gerekirse aşağıdaki kategoriler kullanılabilir:
-
-- Programlama dili
-- Veri işleme kütüphanesi
-- Arayüz framework'ü
-- AI / LLM platformu
-- Test araçları
-- Görselleştirme araçları
-
-> **Not:** Finalde yalnızca gerçekten kullanılan teknoloji ve araçlar yazılmalıdır.
-> Kullanılmayan bir teknoloji çözümün parçasıymış gibi gösterilmemelidir.
-
----
-
-## 10. Kritik Teknik Kararlar
-
-Çözüm geliştirilirken verilen önemli teknik kararlar ve bu kararların nedenleri burada tutulacaktır.
-
-| Karar | Değerlendirilen Alternatif | Neden Bu Seçildi? | Kanıt / Sonuç |
-|---|---|---|---|
-| TODO | TODO | TODO | TODO |
-| TODO | TODO | TODO | TODO |
-
-Örnek karar türü:
-
-```text
-Karar:
-Önce deterministik işlemlerle gerekli sinyalleri üretmek,
-AI'a yalnızca ihtiyaç duyduğu bağlamı göndermek.
-
-Alternatif:
-Tüm girdiyi doğrudan modele göndermek.
-
-Neden:
-Daha kontrollü, tekrarlanabilir ve doğrulanabilir bir akış elde etmek.
-```
-
-> **Not:** Bu yalnızca bir örnektir.
-> Final dokümanda yalnızca gerçekten alınan teknik kararlar bulunmalıdır.
->
-> Sadece “ne seçtik?” değil, “neden seçtik?” sorusu da cevaplanmalıdır.
-
----
-
-## 11. Hata Yönetimi ve Güvenli Davranış
-
-TODO — Uygulamanın gerçekten ele aldığı hata durumları ve davranışları açıklanacaktır.
-
-Kontrol edilebilecek durumlara örnek:
-
-- Girdi dosyası bulunamazsa
-- Veri okunamazsa
-- Beklenen alan bulunmazsa
-- Veri boşsa
-- Geçersiz veri formatı gelirse
-- AI çağrısı başarısız olursa
-- AI beklenen formatta cevap vermezse
-- Harici servis erişilemezse
-- Beklenmeyen uygulama hatası oluşursa
-
-Her gerçek hata durumu için mümkünse:
-
-- Sistem ne yapıyor?
-- Kullanıcıya ne gösteriyor?
-- İşlem güvenli şekilde duruyor mu?
-- Fallback davranışı var mı?
-
-açıklanmalıdır.
-
-> **Önemli:** Final dokümana yalnızca uygulamada gerçekten ele alınan hata durumları yazılmalıdır.
-
----
-
-## 12. Doğrulama ve Test Yaklaşımı
-
-TODO — Mimari ve çözüm çıktılarının nasıl doğrulandığı açıklanacaktır.
-
-Gerekirse aşağıdakiler belirtilebilir:
-
-- Modül testleri
-- Uçtan uca test
-- Örnek veri ile doğrulama
-- Edge case testleri
-- AI çıktılarının veri ile karşılaştırılması
-- Beklenen / gerçekleşen çıktı kontrolü
-- Manuel insan doğrulaması
-
-| Kontrol | Yöntem | Sonuç |
-|---|---|---|
-| TODO | TODO | TODO |
-| TODO | TODO | TODO |
-
-> **Önemli:** “Test edildi” ifadesi mümkün olduğunda hangi yöntemle test edildiğiyle birlikte yazılmalıdır.
-
----
-
-## 13. Bilinen Mimari Sınırlar
-
-TODO — Mimari açıdan bilinçli olarak yapılamayan, sınırlı kalan
-veya süre nedeniyle kapsam dışında bırakılan noktalar belirtilecektir.
-
-| Sınır | Nedeni | Etkisi | Nasıl Geliştirilebilir? |
-|---|---|---|---|
-| TODO | TODO | TODO | TODO |
-
-> Bilinen sınırlar gerçek çözümle uyumlu olmalı ve çözüm olduğundan daha kapsamlı gösterilmemelidir.
-
----
-
-## 14. Kod Haritası
-
-Finalde mimaride anlatılan ana bileşenlerin gerçek kod karşılıkları buraya eklenecektir.
-
-| Bileşen | Dosya / Konum | Açıklama |
-|---|---|---|
-| TODO | `src/TODO` | TODO |
-| TODO | `src/TODO` | TODO |
-| TODO | `src/TODO` | TODO |
-
-### X-Factor Kanıtı
-
-X-Factor için gerçek kod konumu:
-
-```text
-src/<gerçek_dosya_adı>:<gerçek_satır_aralığı>
-```
-
-> **Önemli:** Buradaki tüm dosya yolları final repository içerisinde gerçekten bulunmalıdır.
-> Satır referansları final commit sonrasında yeniden doğrulanmalıdır.
-
----
-
-## 15. Mimari Tutarlılık Kontrolü
-
-Final teslimden önce:
-
-- [ ] Mimari gerçek çalışan çözümü anlatıyor
-- [ ] Kullanılmayan bileşenler dokümandan kaldırıldı
-- [ ] Gerçek kod yolları doğrulandı
-- [ ] Veri yolu `submission.json` ile uyumlu
-- [ ] AI / LLM kullanımı gerçek implementasyonla uyumlu
-- [ ] Harici bağımlılıklar gerçek kullanım ile uyumlu
-- [ ] Gizli erişim bilgisi bulunmuyor
-- [ ] XAI anlatımı gerçek çıktı ile uyumlu
-- [ ] X-Factor kanıt yolu doğrulandı
-- [ ] Test ve doğrulama yöntemleri gerçek
-- [ ] Bilinen sınırlar güncel
-- [ ] Var olmayan teknoloji, bileşen veya özellik anlatılmıyor
+- Aksiyon durumları bellek içinde tutulur; sunucu yeniden başlatılırsa sıfırlanır.
+- Korelasyon kuralları verilen CSV şemasına göre ayarlanmıştır.
+- Kök neden doğruluğu doğrulama etiketi olmadan ölçülemez; çıktı hipotez olarak sunulur.

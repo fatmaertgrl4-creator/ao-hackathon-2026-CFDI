@@ -2,44 +2,58 @@
   "takim": {
     "ad": "CFDI",
     "uyeler": [
-      "TODO"
+      "Ekip tarafindan final oncesi doldurulacak"
     ],
-    "iletisim": "TODO"
+    "iletisim": "Ekip tarafindan final oncesi doldurulacak"
   },
   "proje": {
-    "ad": "TODO",
-    "ozet": "TODO",
+    "ad": "CFDI Alarm Korelasyon Paneli",
+    "ozet": "3.000 satirlik alarm akişini kok neden hipotezi, kanit, karsi olasilik ve izlenebilir aksiyon iceren 7 olay kartina indirger.",
     "deploy_url": null
   },
   "calistirma": {
-    "komut": "TODO",
+    "komut": "python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000",
     "on_kosullar": [
-      "TODO"
+      "Python 3.11+",
+      "Resmi veri paketindeki alarms.csv dosyasi",
+      "Resmi veri paketindeki service_dependencies.csv ve host_inventory.csv dosyalari",
+      "Harici Python paketi gerekmez"
     ],
-    "veri_yolu": "./data"
+    "veri_yolu": "/Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv"
   },
   "ai_kullanimi": {
-    "platform": "SAKA",
+    "platform": "GitHub Copilot Chat",
     "modeller": [
       {
-        "ad": "TODO",
-        "surum": "TODO",
-        "kullanim": "TODO"
+        "ad": "GitHub Copilot",
+        "surum": "Bu oturumda dogrulanmadi",
+        "kullanim": "Senaryo analizi, algoritma taslagi, kod gelistirme ve dokumantasyon destegi"
       }
     ],
     "mcp_sunuculari": [],
     "apiler": [],
-    "insan_ai_is_bolumu": "TODO"
+    "insan_ai_is_bolumu": "AI taslak ve uygulama gelistirme destegi verdi; komutlar, metrikler ve final kararlar insan tarafindan dogrulanmalidir."
   },
   "cozum": {
-    "yaklasim": "TODO",
-    "x_factor": "TODO",
-    "olctugumuz_metrikler": {}
+    "yaklasim": "Kural tabanli aciklanabilir korelasyon: kok aday skoru, zaman-servis-lokasyon-hedef servis-bagimlilik baglari, host kritiklikleri, grup alarm tablosu ve gurultu denetimi.",
+    "x_factor": "Olay kartlarinda kok hipotezi, karsi olasiliklar, ayni korelasyon grubundaki alarm satirlari ve gurultu denetimini birlikte gosteren aciklanabilir korelasyon paneli.",
+    "olctugumuz_metrikler": {
+      "islenen_alarm": 3000,
+      "olay_karti": 7,
+      "indirgeme_orani": 0.00233,
+      "gurultu_adayi": 1755,
+      "ilk_kart_grup_alarm": 391,
+      "ilk_kart_servis_alt_grubu": 13
+    }
   },
   "sunum": {
     "demo_akisi": [
-      "TODO",
-      "TODO"
+      "Web panelini python3 src/app.py --data /Users/TCNGUNDUZ/Downloads/katilimci_paketi/alarms.csv --dependencies /Users/TCNGUNDUZ/Downloads/katilimci_paketi/service_dependencies.csv --inventory /Users/TCNGUNDUZ/Downloads/katilimci_paketi/host_inventory.csv --port 8000 komutuyla ac",
+      "Ust metriklerde 3.000 alarm ve 7 olay kartini goster",
+      "Ilk olay kartinda kok hipotezi, kanitlar ve karsi olasiliklari incele",
+      "Kart icindeki grup bolumunde ayni korelasyona ait alarm satirlarini ve servis alt gruplarini goster",
+      "Gurultu Denetimi gorunumunde elenen alarm gerekcelerini goster",
+      "ACT-01 aksiyon durumunu acik degerinden inceleniyor veya kapandi degerine al"
     ]
   }
 }

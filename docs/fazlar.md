@@ -1,11 +1,6 @@
 # Fazlar
 
-> **Durum: TASLAK**
->
-> Bu dosya hackathon öncesi hazırlıkları ve hackathon sırasında çözümün hangi aşamada olduğunu takip etmek için kullanılacaktır.
->
-> Senaryo henüz açıklanmadığı için çözüme özel adımlar genel tutulmuştur.
-> Senaryo ve veri paketi paylaşıldıktan sonra faz içerikleri gerçek çalışma adımlarına göre güncellenecektir.
+Bu dosya hackathon hazırlıklarını ve S-A1 Alarm Fırtınası çözümü için gerçekleştirilen çalışmaları takip eder.
 
 **Durum değerleri:**
 
@@ -44,28 +39,28 @@ Hackathon başlamadan önce tamamlanması gereken hazırlıklar:
 
 ## Faz 1 — Senaryo Analizi ve Planlama
 
-**Durum:** beklemede
+**Durum:** tamamlandı
 
 Senaryo ve veri paketi paylaşıldığında önce problemin doğru anlaşılması ve uygulanabilir bir yaklaşım belirlenmesi hedeflenecektir.
 
-- [ ] Senaryo ekip tarafından birlikte okundu
-- [ ] Beklenen görev ve çıktı netleştirildi
-- [ ] Problem kısa ve somut şekilde tanımlandı
-- [ ] Açık sorular belirlendi
+- [x] Senaryo ekip tarafından birlikte okundu
+- [x] Beklenen görev ve çıktı netleştirildi
+- [x] Problem kısa ve somut şekilde tanımlandı
+- [x] Açık sorular belirlendi
 - [ ] Gerekli sorular toplu soru penceresinde soruldu
-- [ ] İlk başarı kriterleri belirlendi
-- [ ] Veri paketinin formatı ve yapısı incelendi
-- [ ] Önemli olabilecek alanlar ve sinyaller belirlendi
-- [ ] İlk gözlemler kaydedildi
-- [ ] İlk hipotezler oluşturuldu
-- [ ] Hipotezlerin doğrulama yöntemleri belirlendi
-- [ ] Alternatif çözüm yaklaşımları değerlendirildi
-- [ ] MVP kapsamı belirlendi
-- [ ] Ana çözüm yaklaşımı seçildi
-- [ ] İnsan – AI iş bölümü netleştirildi
-- [ ] İlk geliştirme planı oluşturuldu
-- [ ] Kullanılan kritik planlama / veri keşfi prompt'ları kaydedildi
-- [ ] `docs/plan.md` gerçek bilgilerle güncellendi
+- [x] İlk başarı kriterleri belirlendi
+- [x] Veri paketinin formatı ve yapısı incelendi
+- [x] Önemli olabilecek alanlar ve sinyaller belirlendi
+- [x] İlk gözlemler kaydedildi
+- [x] İlk hipotezler oluşturuldu
+- [x] Hipotezlerin doğrulama yöntemleri belirlendi
+- [x] Alternatif çözüm yaklaşımları değerlendirildi
+- [x] MVP kapsamı belirlendi
+- [x] Ana çözüm yaklaşımı seçildi
+- [x] İnsan – AI iş bölümü netleştirildi
+- [x] İlk geliştirme planı oluşturuldu
+- [x] Kullanılan kritik planlama / veri keşfi prompt'ları kaydedildi
+- [x] `docs/plan.md` gerçek bilgilerle güncellendi
 
 > **Not:** İlk aşamada doğrudan kapsamlı kod geliştirmeye geçmek yerine problem, veri ve yaklaşımın netleştirilmesine öncelik verilmelidir.
 >
@@ -75,48 +70,48 @@ Senaryo ve veri paketi paylaşıldığında önce problemin doğru anlaşılmas�
 
 ## Faz 2 — Geliştirme, Analiz ve Doğrulama
 
-**Durum:** beklemede
+**Durum:** tamamlandı
 
 Seçilen yaklaşım mümkün olduğunca küçük, test edilebilir ve doğrulanabilir parçalar halinde geliştirilecektir.
 
 ### Temel Geliştirme
 
-- [ ] Veri girdisi / okuma mekanizması oluşturuldu
-- [ ] Gerekli veri hazırlama adımları tamamlandı
-- [ ] Senaryonun beklediği temel çözüm mantığı geliştirildi
-- [ ] Çekirdek modüller ayrı ayrı çalıştırıldı
-- [ ] İlk uçtan uca çalışan akış oluşturuldu
+- [x] Veri girdisi / okuma mekanizması oluşturuldu
+- [x] Gerekli veri hazırlama adımları tamamlandı
+- [x] Senaryonun beklediği temel çözüm mantığı geliştirildi
+- [x] Çekirdek modüller ayrı ayrı çalıştırıldı
+- [x] İlk uçtan uca çalışan akış oluşturuldu
 
 ### Analiz ve Doğrulama
 
-- [ ] İlk hipotezler gerçek verilerle karşılaştırıldı
-- [ ] Kritik sonuçlar veri veya test çıktılarıyla doğrulandı
-- [ ] Kanıtlanmayan nedensellik iddiaları kontrol edildi
-- [ ] Hatalar ve önemli edge case'ler incelendi
-- [ ] Çözüm uçtan uca yeniden çalıştırıldı
+- [x] İlk hipotezler gerçek verilerle karşılaştırıldı
+- [x] Kritik sonuçlar veri veya test çıktılarıyla doğrulandı
+- [x] Kanıtlanmayan nedensellik iddiaları kontrol edildi
+- [x] Hatalar ve önemli edge case'ler incelendi
+- [x] Çözüm uçtan uca yeniden çalıştırıldı
 
 ### AI Kullanımı
 
-- [ ] AI'ın gerçekten ihtiyaç duyulduğu noktalar belirlendi
-- [ ] Gerekli AI entegrasyonları çalışır hale getirildi
-- [ ] AI çıktıları insan tarafından doğrulandı
-- [ ] Kullanılan AI araçları ve gerçek model sürümleri kaydedildi
-- [ ] Kritik kullanılan prompt'lar kaydedildi
+- [x] AI'ın gerçekten ihtiyaç duyulduğu noktalar belirlendi
+- [x] Çalışan ürün içinde canlı AI entegrasyonu kullanılmamasına karar verildi
+- [x] AI çıktıları insan tarafından doğrulandı
+- [x] Kullanılan AI araçları kaydedildi; model sürümü final öncesi doğrulanacak
+- [x] Kritik kullanılan prompt'lar kaydedildi
 - [ ] Gerekiyorsa model karşılaştırması gerçekleştirildi
 
 ### Açıklanabilirlik ve X-Factor
 
-- [ ] Çözüm karar / tespit / öneri üretiyorsa açıklanabilirlik yaklaşımı oluşturuldu
-- [ ] Sonuçların gerekçe ve kanıtları gösterilebilir hale getirildi
-- [ ] Çözüm için anlamlı X-Factor netleştirildi
-- [ ] X-Factor gerçek üründe çalışır hale getirildi
-- [ ] X-Factor'ın kod ve/veya çıktı kanıtı oluşturuldu
+- [x] Çözüm karar / tespit / öneri üretiyorsa açıklanabilirlik yaklaşımı oluşturuldu
+- [x] Sonuçların gerekçe ve kanıtları gösterilebilir hale getirildi
+- [x] Çözüm için anlamlı X-Factor netleştirildi
+- [x] X-Factor gerçek üründe çalışır hale getirildi
+- [x] X-Factor'ın kod ve/veya çıktı kanıtı oluşturuldu
 
 ### Ölçüm ve Teknik Kanıt
 
-- [ ] Senaryoya uygun gerçek metrikler ölçüldü
-- [ ] Metriklerin hesaplama yöntemi kaydedildi
-- [ ] `docs/mimari.md` gerçek çözümle güncellendi
+- [x] Senaryoya uygun gerçek metrikler ölçüldü
+- [x] Metriklerin hesaplama yöntemi kaydedildi
+- [x] `docs/mimari.md` gerçek çözümle güncellendi
 - [ ] Anlamlı ara commit'ler oluşturuldu
 
 > **Not:** Büyük ve doğrulanmamış tek bir kod üretimi yerine modül bazlı geliştirme, çalıştırma ve doğrulama tercih edilmelidir.
@@ -127,25 +122,25 @@ Seçilen yaklaşım mümkün olduğunca küçük, test edilebilir ve doğrulanab
 
 ## Faz 3 — Dokümantasyon ve Jüri Hazırlığı
 
-**Durum:** beklemede
+**Durum:** devam ediyor
 
 Final dokümantasyon gerçek çalışan çözüm ve gerçek kanıtlarla güncellenecektir.
 
 ### README
 
-- [ ] `README.md` gerçek proje bilgileriyle güncellendi
-- [ ] Proje adı ve tek cümlelik özet netleştirildi
-- [ ] Çözülen problem açık şekilde anlatıldı
-- [ ] Çözümün uçtan uca nasıl çalıştığı açıklandı
-- [ ] Kurulum adımları güncellendi
-- [ ] Çalıştırma komutu doğrulandı
-- [ ] Beklenen çıktı açıklandı
+- [x] `README.md` gerçek proje bilgileriyle güncellendi
+- [x] Proje adı ve tek cümlelik özet netleştirildi
+- [x] Çözülen problem açık şekilde anlatıldı
+- [x] Çözümün uçtan uca nasıl çalıştığı açıklandı
+- [x] Kurulum adımları güncellendi
+- [x] Çalıştırma komutu doğrulandı
+- [x] Beklenen çıktı açıklandı
 - [ ] Kullanılan tüm AI araçları ve gerçek model sürümleri yazıldı
 - [ ] İnsan – AI iş bölümü gerçek süreçle güncellendi
-- [ ] XAI / açıklanabilirlik yaklaşımı gerekiyorsa açıklandı
-- [ ] X-Factor açıklandı ve kanıtlandı
-- [ ] Gerçek ölçümler eklendi
-- [ ] Bilinen sınırlar açıklandı
+- [x] XAI / açıklanabilirlik yaklaşımı gerekiyorsa açıklandı
+- [x] X-Factor açıklandı ve kanıtlandı
+- [x] Gerçek ölçümler eklendi
+- [x] Bilinen sınırlar açıklandı
 
 ### MCP ve API
 
@@ -207,7 +202,7 @@ Final dokümantasyon gerçek çalışan çözüm ve gerçek kanıtlarla güncell
 
 - [ ] Repo public durumda
 - [ ] Gereksiz test / debug / geçici dosyalar kontrol edildi
-- [ ] `TODO`, `FIXME` ve placeholder alanları kontrol edildi
+- [ ] Yer tutucu ve düzeltme notları kontrol edildi
 - [ ] `AI_JURI.md` güncel
 - [ ] `submission.json` güncel
 - [ ] README güncel

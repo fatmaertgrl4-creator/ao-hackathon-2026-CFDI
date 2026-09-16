@@ -724,17 +724,14 @@ HTML = """
     :root {
       --ink: #1e2328;
       --muted: #65707a;
-      --paper: #f6f4ef;
-      --panel: #fffdfa;
+      --paper: #f7f2ea;
+      --panel: #fffaf1;
       --line: #ded3c2;
       --danger: #c7352d;
       --warn: #d58022;
       --ok: #317a57;
       --blue: #276b9f;
       --charcoal: #29343d;
-      --highlight: #0f4c75;
-      --highlight-soft: #eaf4fb;
-      --shadow: 0 18px 42px rgba(41,52,61,.10);
     }
     * { box-sizing: border-box; }
     body {
@@ -752,13 +749,13 @@ HTML = """
       grid-template-columns: 1fr auto;
       gap: 18px;
       align-items: end;
-    padding: 22px 28px 16px;
+      padding: 22px 28px 14px;
       border-bottom: 1px solid var(--line);
-    background: rgba(255,253,250,.92);
+      background: rgba(255,250,241,.86);
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-    z-index: 5;
+      z-index: 2;
     }
     h1 { margin: 0; font-size: clamp(24px, 4vw, 40px); letter-spacing: 0; }
     .subtitle { color: var(--muted); margin-top: 6px; max-width: 900px; }
@@ -768,118 +765,49 @@ HTML = """
       background: #fff;
       color: var(--ink);
       min-height: 38px;
-      border-radius: 10px;
-      padding: 8px 12px;
+      border-radius: 6px;
+      padding: 8px 10px;
       font: inherit;
-      transition: .18s ease;
     }
     button { cursor: pointer; }
-    button:hover, select:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(41,52,61,.08); }
-    main { padding: 24px 28px 40px; }
+    main { padding: 22px 28px 40px; }
     .metrics { display: grid; grid-template-columns: repeat(4, minmax(140px, 1fr)); gap: 12px; margin-bottom: 18px; }
-    .metric, .panel, .detail-card, .noise-panel {
+    .metric, .card, .noise-panel {
       background: rgba(255,250,241,.94);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+      border-radius: 8px;
+      box-shadow: 0 10px 24px rgba(41,52,61,.07);
     }
-    .metric { padding: 16px; min-height: 92px; position: relative; overflow: hidden; }
-    .metric::after {
-      content: "";
-      position: absolute;
-      inset: auto -22px -26px auto;
-      width: 92px;
-      height: 92px;
-      border-radius: 50%;
-      background: rgba(39,107,159,.07);
-    }
+    .metric { padding: 14px; min-height: 88px; }
     .metric span { display: block; color: var(--muted); font-size: 13px; }
-    .metric strong { display: block; font-size: 30px; margin-top: 8px; position: relative; z-index: 1; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1.35fr) 360px; gap: 18px; align-items: start; }
-    .stack { display: grid; gap: 16px; }
-    .hero {
-      padding: 18px 20px;
-      background: linear-gradient(135deg, rgba(15,76,117,.96), rgba(39,107,159,.88));
-      color: #fff;
-      border-radius: 18px;
-      box-shadow: 0 18px 42px rgba(15,76,117,.24);
-    }
-    .hero h2 { margin: 0 0 8px; font-size: 24px; }
-    .hero p { margin: 0; color: rgba(255,255,255,.88); line-height: 1.5; }
-    .hero-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
-    .hero-stat {
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 14px;
-      padding: 12px 14px;
-    }
-    .hero-stat span { display: block; font-size: 12px; opacity: .86; }
-    .hero-stat strong { display: block; margin-top: 6px; font-size: 20px; }
-    .detail-card { padding: 20px; border-top: 5px solid var(--highlight); }
-    .detail-card.sev5 { border-top-color: var(--danger); }
-    .detail-card.sev4 { border-top-color: var(--warn); }
-    .detail-card h2 { margin: 0 0 10px; font-size: 24px; letter-spacing: 0; }
+    .metric strong { display: block; font-size: 30px; margin-top: 6px; }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(320px, .7fr); gap: 16px; align-items: start; }
+    .cards { display: grid; gap: 12px; }
+    .card { padding: 16px; border-left: 7px solid var(--warn); }
+    .card.sev5 { border-left-color: var(--danger); }
+    .card.sev4 { border-left-color: var(--warn); }
+    .card h2 { margin: 0 0 8px; font-size: 20px; letter-spacing: 0; }
     .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
-    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px; background: #fff; color: var(--charcoal); font-size: 13px; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 4px 8px; background: #fff; color: var(--charcoal); font-size: 13px; }
     .chips-tight { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
-    .reason { color: var(--charcoal); line-height: 1.55; font-size: 15px; }
+    .reason { color: var(--charcoal); line-height: 1.45; }
     .evidence { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
-    .box { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-height: 84px; }
+    .box { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 10px; min-height: 80px; }
     .box h3 { margin: 0 0 6px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0; }
-    details.group { margin-top: 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; }
-    details.group summary { cursor: pointer; padding: 12px 14px; font-weight: 700; background: #f4eadb; }
+    details.group { margin-top: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; overflow: hidden; }
+    details.group summary { cursor: pointer; padding: 10px 12px; font-weight: 700; background: #f4eadb; }
     .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; padding: 12px; }
-    .service-tile { border: 1px solid var(--line); border-radius: 10px; padding: 10px; background: #fffaf1; }
+    .service-tile { border: 1px solid var(--line); border-radius: 6px; padding: 9px; background: #fffaf1; }
     .service-tile strong { display: block; }
     .alarm-table-wrap { max-height: 360px; overflow: auto; border-top: 1px solid var(--line); }
     .alarm-table { min-width: 980px; }
     .sev-pill { display: inline-block; min-width: 24px; text-align: center; border-radius: 999px; padding: 2px 7px; color: #fff; background: var(--blue); font-weight: 700; }
     .sev-pill.s5 { background: var(--danger); }
     .sev-pill.s4 { background: var(--warn); }
-    .action { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .action { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
     .status { font-weight: 700; color: var(--blue); }
-    .side-rail { display: grid; gap: 14px; position: sticky; top: 96px; }
-    .panel { padding: 16px; }
-    .panel h2, .panel h3, .noise-panel h2 { margin: 0 0 10px; }
-    .selector-panel { padding: 16px; max-height: calc(100vh - 120px); overflow: auto; }
-    .selector-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 12px; }
-    .selector-head span { color: var(--muted); font-size: 13px; }
-    .card-list { display: grid; gap: 10px; }
-    .card-item {
-      width: 100%;
-      text-align: left;
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 14px;
-      padding: 13px 14px;
-      display: grid;
-      gap: 8px;
-      box-shadow: 0 10px 18px rgba(41,52,61,.05);
-    }
-    .card-item:hover { border-color: var(--highlight); }
-    .card-item.active {
-      border-color: var(--highlight);
-      background: var(--highlight-soft);
-      box-shadow: 0 14px 26px rgba(39,107,159,.16);
-    }
-    .card-item-top { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
-    .card-item strong { font-size: 15px; }
-    .card-item small { color: var(--muted); }
-    .card-item p { margin: 0; color: var(--charcoal); font-size: 13px; line-height: 1.4; }
-    .card-item-meta { display: flex; flex-wrap: wrap; gap: 6px; }
-    .noise-panel { padding: 16px; }
-    .summary-kpis { display: grid; gap: 10px; }
-    .summary-kpi { padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
-    .summary-kpi span { display: block; color: var(--muted); font-size: 12px; }
-    .summary-kpi strong { display: block; font-size: 22px; margin-top: 4px; }
-    .detail-empty {
-      padding: 36px 20px;
-      text-align: center;
-      color: var(--muted);
-      background: rgba(255,250,241,.94);
-      border: 1px dashed var(--line);
-      border-radius: 16px;
-    }
+    .noise-panel { padding: 16px; position: sticky; top: 96px; }
+    .noise-panel h2 { margin-top: 0; }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     th, td { border-bottom: 1px solid var(--line); padding: 8px 4px; text-align: left; vertical-align: top; }
     th { color: var(--muted); }
@@ -889,15 +817,13 @@ HTML = """
     dialog::backdrop { background: rgba(30,35,40,.45); }
     .hidden { display: none; }
     @media (max-width: 960px) {
-      header, .layout { grid-template-columns: 1fr; }
+      header, .grid { grid-template-columns: 1fr; }
       .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .hero-grid, .evidence { grid-template-columns: 1fr; }
-      .side-rail { position: static; }
-      .selector-panel { max-height: none; }
+      .noise-panel { position: static; }
     }
     @media (max-width: 560px) {
       main, header { padding-left: 14px; padding-right: 14px; }
-      .metrics, .evidence, .hero-grid { grid-template-columns: 1fr; }
+      .metrics, .evidence { grid-template-columns: 1fr; }
       .action { grid-template-columns: 1fr; }
     }
   </style>
@@ -921,23 +847,11 @@ HTML = """
   </header>
   <main>
     <section class="metrics" id="metrics"></section>
-    <section class="layout">
-      <div class="stack">
-        <section class="hero" id="hero"></section>
-        <section id="selectedCard"></section>
-      </div>
-      <aside class="side-rail">
-        <section class="panel selector-panel">
-          <div class="selector-head">
-            <h2>Olay Kartlari</h2>
-            <span id="selectorCount"></span>
-          </div>
-          <div class="card-list" id="cardList"></div>
-        </section>
-        <section class="noise-panel">
-          <h2>Operasyon Ozeti</h2>
-          <div id="opsSummary"></div>
-        </section>
+    <section class="grid">
+      <div class="cards" id="cards"></div>
+      <aside class="noise-panel">
+        <h2>Operasyon Ozeti</h2>
+        <div id="opsSummary"></div>
       </aside>
     </section>
   </main>
@@ -949,36 +863,16 @@ HTML = """
   <script>
     let analysis = null;
     const actionStatuses = new Map();
-    let selectedCardId = null;
 
     async function loadAnalysis() {
       const response = await fetch('/api/analysis');
       analysis = await response.json();
       analysis.event_cards.forEach(card => actionStatuses.set(card.action.id, card.action.status));
-      if (!selectedCardId && analysis.event_cards.length) {
-        selectedCardId = analysis.event_cards[0].id;
-      }
       render();
     }
 
     function metric(label, value) {
       return `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`;
-    }
-
-    function visibleCards() {
-      const filter = document.getElementById('statusFilter').value;
-      return analysis.event_cards.filter(card => filter === 'all' || (actionStatuses.get(card.action.id) || card.action.status) === filter);
-    }
-
-    function ensureSelectedVisible(cards) {
-      if (!cards.length) {
-        selectedCardId = null;
-        return null;
-      }
-      if (!selectedCardId || !cards.some(card => card.id === selectedCardId)) {
-        selectedCardId = cards[0].id;
-      }
-      return cards.find(card => card.id === selectedCardId) || cards[0];
     }
 
     function renderMetrics() {
@@ -990,20 +884,6 @@ HTML = """
         metric('Indirgeme orani', `${(summary.reduction_ratio * 100).toFixed(2)}%`),
         metric('Gurultu adayi', summary.noise_count)
       ].join('');
-    }
-
-    function renderHero(selectedCard, cards) {
-      const open = cards.filter(card => (actionStatuses.get(card.action.id) || card.action.status) !== 'kapandi').length;
-      const sev5 = cards.filter(card => card.max_severity >= 5).length;
-      document.getElementById('hero').innerHTML = `
-        <h2>${selectedCard ? selectedCard.root_hypothesis : 'Filtreye uyan kart bulunamadi'}</h2>
-        <p>${selectedCard ? selectedCard.explanation : 'Sagdaki listeden bir kart sectiginizde detaylari burada acilir.'}</p>
-        <div class="hero-grid">
-          <div class="hero-stat"><span>Secili kart</span><strong>${selectedCard ? selectedCard.id : '-'}</strong></div>
-          <div class="hero-stat"><span>Acik / incelenen aksiyon</span><strong>${open}</strong></div>
-          <div class="hero-stat"><span>Sev-5 kok adayi</span><strong>${sev5}</strong></div>
-        </div>
-      `;
     }
 
     function chips(items) {
@@ -1041,13 +921,13 @@ HTML = """
                 </tr>`).join('')}</tbody></table></div>`;
         }
 
-        function renderCardDetail(card) {
+        function renderCard(card) {
       const status = actionStatuses.get(card.action.id) || card.action.status;
       const typeBars = card.evidence.top_alarm_types.map(([name, count]) => {
         const width = Math.max(8, Math.round(count / card.alarm_count * 100));
         return `<div>${name} (${count})<div class="bar"><span style="width:${width}%"></span></div></div>`;
       }).join('');
-      return `<article class="detail-card sev${card.max_severity}" data-status="${status}">
+      return `<article class="card sev${card.max_severity}" data-status="${status}">
         <h2>${card.priority}. ${card.root_hypothesis}</h2>
         <div class="meta">
           <span class="chip">${card.id}</span>
@@ -1078,72 +958,28 @@ HTML = """
       </article>`;
     }
 
-    function renderCardList(cards) {
-      document.getElementById('selectorCount').textContent = `${cards.length} kart`;
-      document.getElementById('cardList').innerHTML = cards.map(card => {
-        const status = actionStatuses.get(card.action.id) || card.action.status;
-        const active = card.id === selectedCardId ? 'active' : '';
-        return `<button class="card-item ${active}" data-card-id="${card.id}" type="button">
-          <div class="card-item-top">
-            <strong>${card.priority}. ${card.root_hypothesis}</strong>
-            <span class="sev-pill s${card.max_severity}">${card.max_severity}</span>
-          </div>
-          <small>${card.id} · ${card.time_range.start} - ${card.time_range.end}</small>
-          <p>${card.explanation}</p>
-          <div class="card-item-meta">
-            <span class="chip">${card.alarm_count} alarm</span>
-            <span class="chip">${card.affected_services.length} etkilenen servis</span>
-            <span class="chip">${status}</span>
-          </div>
-        </button>`;
-      }).join('') || '<div class="detail-empty">Bu filtrede kart yok.</div>';
-      document.querySelectorAll('[data-card-id]').forEach(button => {
-        button.addEventListener('click', () => {
-          selectedCardId = button.dataset.cardId;
-          render();
-        });
-      });
-    }
-
-    function renderSelectedCard(card) {
-      const container = document.getElementById('selectedCard');
-      if (!card) {
-        container.innerHTML = '<div class="detail-empty">Sag listeden bir olay karti secin.</div>';
-        return;
-      }
-      container.innerHTML = renderCardDetail(card);
+    function renderCards() {
+      const filter = document.getElementById('statusFilter').value;
+      const cards = analysis.event_cards.filter(card => filter === 'all' || (actionStatuses.get(card.action.id) || card.action.status) === filter);
+      document.getElementById('cards').innerHTML = cards.map(renderCard).join('') || '<p>Bu filtrede olay karti yok.</p>';
       document.querySelectorAll('select[data-action-id]').forEach(select => {
         select.addEventListener('change', async event => {
           const actionId = event.target.dataset.actionId;
           const status = event.target.value;
           await fetch(`/api/actions/${actionId}`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status})});
           actionStatuses.set(actionId, status);
-          render();
+          renderCards();
+          renderOpsSummary();
         });
       });
     }
 
-    function renderCards() {
-      const cards = visibleCards();
-      const selectedCard = ensureSelectedVisible(cards);
-      renderHero(selectedCard, cards);
-      renderCardList(cards);
-      renderSelectedCard(selectedCard);
-    }
-
     function renderOpsSummary() {
-      const cards = visibleCards();
-      const open = cards.filter(card => (actionStatuses.get(card.action.id) || card.action.status) !== 'kapandi').length;
-      const severe = cards.filter(card => card.max_severity >= 5).length;
+      const open = [...actionStatuses.values()].filter(status => status !== 'kapandi').length;
+      const severe = analysis.event_cards.filter(card => card.max_severity >= 5).length;
       const topTypes = analysis.summary.top_alarm_types.map(([name, count]) => `<tr><td>${name}</td><td>${count}</td></tr>`).join('');
-      const selectedCard = cards.find(card => card.id === selectedCardId);
       document.getElementById('opsSummary').innerHTML = `
-        <div class="summary-kpis">
-          <div class="summary-kpi"><span>Acik aksiyon</span><strong>${open}</strong></div>
-          <div class="summary-kpi"><span>Sev-5 kart</span><strong>${severe}</strong></div>
-          <div class="summary-kpi"><span>Secili kart alarmi</span><strong>${selectedCard ? selectedCard.alarm_count : 0}</strong></div>
-        </div>
-        <h3 style="margin-top:14px;">En yogun alarm tipleri</h3>
+        <p><strong>${severe}</strong> kart sev-5 kok adayina sahip. <strong>${open}</strong> aksiyon acik veya inceleniyor.</p>
         <table><thead><tr><th>Alarm tipi</th><th>Adet</th></tr></thead><tbody>${topTypes}</tbody></table>
       `;
     }
@@ -1151,11 +987,11 @@ HTML = """
     function renderNoise() {
       const noise = analysis.noise_audit;
       const typeRows = noise.by_type.map(([name, count]) => `<tr><td>${name}</td><td>${count}</td></tr>`).join('');
-      const sampleRows = noise.samples.slice(0, 40).map(row => `<tr><td>${row.alarm_id}</td><td>${row.service}</td><td>${row.service_criticality}</td><td>${row.alarm_type}</td><td>${row.severity}</td><td>${row.reason}</td></tr>`).join('');
+    const sampleRows = noise.samples.slice(0, 40).map(row => `<tr><td>${row.alarm_id}</td><td>${row.service}</td><td>${row.service_criticality}</td><td>${row.alarm_type}</td><td>${row.severity}</td><td>${row.reason}</td></tr>`).join('');
       document.getElementById('noiseContent').innerHTML = `
         <p>${noise.count} alarm olay karti esigini gecemedigi icin gurultu/izleme adayi olarak tutuldu.</p>
         <h3>Tip Dagilimi</h3><table><tbody>${typeRows}</tbody></table>
-        <h3>Ornek Denetim Satirlari</h3><table><thead><tr><th>ID</th><th>Servis</th><th>Kritiklik</th><th>Tip</th><th>Sev</th><th>Neden elendi</th></tr></thead><tbody>${sampleRows}</tbody></table>
+                <h3>Ornek Denetim Satirlari</h3><table><thead><tr><th>ID</th><th>Servis</th><th>Kritiklik</th><th>Tip</th><th>Sev</th><th>Neden elendi</th></tr></thead><tbody>${sampleRows}</tbody></table>
       `;
       document.getElementById('noiseDialog').showModal();
     }
@@ -1163,12 +999,12 @@ HTML = """
     function render() {
       renderMetrics();
       renderCards();
-          renderOpsSummary();
+      renderOpsSummary();
     }
 
     document.getElementById('reloadButton').addEventListener('click', loadAnalysis);
     document.getElementById('noiseButton').addEventListener('click', renderNoise);
-    document.getElementById('statusFilter').addEventListener('change', render);
+    document.getElementById('statusFilter').addEventListener('change', renderCards);
     loadAnalysis();
   </script>
 </body>

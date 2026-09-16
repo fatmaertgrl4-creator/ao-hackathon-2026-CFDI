@@ -25,17 +25,24 @@
     "veri_yolu": "data/raw/alarms.csv"
   },
   "ai_kullanimi": {
-    "platform": "GitHub Copilot Chat",
+    "platform": "GitHub Copilot Chat; OpenAI ChatGPT",
     "modeller": [
       {
+        "platform": "GitHub Copilot Chat",
         "ad": "GitHub Copilot Chat",
         "surum": "VS Code Copilot extension 0.65.0, VS Code 1.137.0, oturum tarihi 2026-09-16",
         "kullanim": "Senaryo analizi, algoritma taslagi, kod gelistirme ve dokumantasyon destegi"
+      },
+      {
+        "platform": "OpenAI ChatGPT",
+        "ad": "GPT-5.6 Sol",
+        "surum": "2026-09-16 final review oturumu",
+        "kullanim": "Final repository review, juri gereksinim kontrolu, dokumantasyon ve kanit tutarliligi kontrolu"
       }
     ],
     "mcp_sunuculari": [],
     "apiler": [],
-    "insan_ai_is_bolumu": "AI taslak ve uygulama gelistirme destegi verdi; komutlar, metrikler ve final kararlar insan tarafindan dogrulanmalidir."
+    "insan_ai_is_bolumu": "GitHub Copilot Chat senaryo analizi, algoritma taslagi, kod gelistirme ve dokumantasyon destegi icin; OpenAI ChatGPT (GPT-5.6 Sol) ise final repository review ve juri gereksinim kontrolu icin kullanildi. Onerilen degisiklikler ekip tarafindan degerlendirilip dogrulananlar uygulandi."
   },
   "cozum": {
     "yaklasim": "Kural tabanli aciklanabilir korelasyon: kok aday skoru, zaman-servis-lokasyon-hedef servis-bagimlilik baglari, host kritiklikleri, grup alarm tablosu ve gurultu denetimi.",

@@ -95,7 +95,7 @@ Seçilen yaklaşım mümkün olduğunca küçük, test edilebilir ve doğrulanab
 - [x] AI'ın gerçekten ihtiyaç duyulduğu noktalar belirlendi
 - [x] Çalışan ürün içinde canlı AI entegrasyonu kullanılmamasına karar verildi
 - [x] AI çıktıları insan tarafından doğrulandı
-- [x] Kullanılan AI araçları kaydedildi; model sürümü final öncesi doğrulanacak
+- [x] Kullanılan AI araçları ve doğrulanan sürüm bilgileri kaydedildi
 - [x] Kritik kullanılan prompt'lar kaydedildi
 - [ ] Gerekiyorsa model karşılaştırması gerçekleştirildi
 
@@ -160,6 +160,7 @@ Final dokümantasyon gerçek çalışan çözüm ve gerçek kanıtlarla güncell
 - [x] README / AI_JURI / submission ortak alanları karşılaştırıldı
 - [x] Çalıştırma komutu üç dosyada da tutarlı
 - [x] Model adları ve sürümleri ilgili dokümanlarda tutarlı
+- [x] AI araçlarının geliştirme ve final review rolleri birbirinden ayrıştırıldı
 - [x] Ölçülen metrikler ilgili dokümanlarda tutarlı
 - [x] Bilinen sınırlar final çözümle uyumlu
 
@@ -167,8 +168,9 @@ Final dokümantasyon gerçek çalışan çözüm ve gerçek kanıtlarla güncell
 
 - [x] Yarışma sırasında gerçekten kullanılan kritik prompt'lar `prompts/used/` altında kaydedildi
 - [x] Prompt kayıtlarında kullanılan araç / model bilgileri belirtildi
-- [ ] İnsan kararı ve doğrulama adımları kaydedildi
-- [ ] Var olmayan kanıt yolu veya sonuç yazılmadı
+- [x] İnsan kararı ve doğrulama adımları kaydedildi
+- [x] Var olmayan kanıt yolu veya sonuç yazılmadı
+- [x] ChatGPT final review kullanımı ayrı bir kanıt dosyasında belgelendi
 
 ---
 
@@ -201,23 +203,29 @@ Final dokümantasyon gerçek çalışan çözüm ve gerçek kanıtlarla güncell
 ### Repository Kontrolü
 
 - [x] Repo public durumda
-- [ ] Gereksiz test / debug / geçici dosyalar kontrol edildi
-- [ ] Yer tutucu ve düzeltme notları kontrol edildi
+- [x] Gereksiz test / debug / geçici dosyalar kontrol edildi
+- [x] Yer tutucu ve düzeltme notları kontrol edildi
 - [x] `AI_JURI.md` güncel
 - [x] `submission.json` güncel
 - [x] README güncel
+- [x] `.github/copilot-instructions.md` standart konumda mevcut
+- [x] Root `copilot-instructions.md` geliştirme izi olarak bilinçli şekilde korunuyor
+- [x] `testAI.md` erişim / AI testi izi olarak bilinçli şekilde korunuyor
+- [x] Final repo yapısında bu dosyaların neden bulunduğu açıklanabilir
 - [x] X-Factor dosya ve satır referansları final kodla yeniden doğrulandı
 - [x] `git status` kontrol edildi
 - [ ] Commit edilmemiş kritik değişiklik kalmadı
 - [x] Merge conflict bulunmuyor
 - [x] Local / remote durumu kontrol edildi
 
+> **Not:** `testAI.md` çalışan ürünün bir parçası değildir; geliştirme sürecindeki erişim / AI testi kanıtı olarak korunur. Root'taki `copilot-instructions.md` de geliştirme izi olarak saklanır; GitHub Copilot'un standart yolu ayrıca `.github/copilot-instructions.md` olarak eklenmiştir.
+
 ### Final Teslim
 
-- [x] Final commit oluşturuldu
-- [x] Final push tamamlandı
-- [x] GitHub üzerindeki final commit doğrulandı
-- [x] Repo final push sonrasında tekrar kontrol edildi
+- [ ] Final commit oluşturuldu
+- [ ] Final push tamamlandı
+- [ ] GitHub üzerindeki final commit doğrulandı
+- [ ] Repo final push sonrasında tekrar kontrol edildi
 - [ ] Teslim saatinden önce gönderimin tamamlandığı doğrulandı
 
 > **KRİTİK:** Değerlendirme 17:30'daki son commit üzerinden yapılacaktır.

@@ -90,12 +90,15 @@ Bu geliştirme sırasında GitHub Copilot Chat kullanıldı.
 - VS Code sürümü: 1.137.0
 - Oturum tarihi: 2026-09-16
 
+Final jüri hazırlığı ve repository kontrolünde OpenAI ChatGPT (GPT-5.6 Sol) ikinci göz olarak kullanıldı. Jüri gereksinimleri, dokümantasyon tutarlılığı ve eksik kanıtlar kontrol edildi; önerilen değişiklikler ekip tarafından doğrulanarak uygulandı.
+
 | Aşama | AI'ın Rolü | İnsan Kararı / Doğrulaması |
 |---|---|---|
 | Senaryo analizi | Gereksinimleri çalışan bileşenlere çevirmek | Senaryo ve veri paketinin gerçek olduğunu sağlamak |
 | Algoritma tasarımı | Korelasyon skoru, kök aday seçimi ve açıklama yapısını önermek | Kök neden iddialarının hipotez olarak kalması |
 | Kodlama | Python uygulamasını, API'yi ve dashboard'u üretmek | Komutları çalıştırarak çıktıyı doğrulamak |
 | Dokümantasyon | Gerçek ölçümlere dayalı doküman taslağı oluşturmak | Final takım bilgisi ve model sürümünü doğrulamak |
+| Final jüri hazırlığı | Repository final review, jüri gereksinimleri ve dokümantasyon tutarlılığını ikinci gözle kontrol etmek | Yalnız ekip tarafından doğrulanan değişiklikleri uygulamak |
 
 Kritik prompt kaydı: [prompts/used/2026-09-16-korelasyon-uygulamasi.md](prompts/used/2026-09-16-korelasyon-uygulamasi.md)
 
@@ -132,6 +135,7 @@ Demo akışı: [demo/README.md](demo/README.md)
 - Harici Python paketi kullanılmadı.
 - MCP sunucusu kullanılmadı.
 - Harici API entegrasyonu kullanılmadı.
+- OpenAI ChatGPT (GPT-5.6 Sol) yalnız geliştirme/review aracı olarak kullanıldı; çalışan ürün OpenAI API çağrısı yapmaz.
 - Kalıcı veritabanı kullanılmadı; aksiyon durumu demo sırasında bellek içinde tutulur.
 - Kullanılan AI çalışma ortamı: GitHub Copilot Chat + VS Code Copilot extension 0.65.0 + VS Code 1.137.0
 

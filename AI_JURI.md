@@ -10,6 +10,7 @@
 | Araç / Platform | Model | Sürüm | Kullanım Amacı |
 |---|---|---|---|
 | GitHub Copilot Chat | GitHub Copilot Chat | VS Code Copilot extension 0.65.0 · VS Code 1.137.0 · Oturum: 2026-09-16 | Senaryo analizi, algoritma taslağı, kod geliştirme ve dokümantasyon desteği |
+| OpenAI ChatGPT | GPT-5.6 Sol | 2026-09-16 final review | Jüri gereksinim kontrolü, repository final denetimi, dokümantasyon ve kanıt tutarlılığı kontrolü |
 
 SAKA bu uygulama geliştirme adımında çalışan ürün içine entegre edilmedi. Final teslimde SAKA kullanılırsa model adı ve sürümü ayrıca doğrulanmalıdır.
 
@@ -17,9 +18,11 @@ SAKA bu uygulama geliştirme adımında çalışan ürün içine entegre edilmed
 
 AI, senaryo gereksinimlerini uygulanabilir bileşenlere çevirmek, korelasyon yaklaşımını şekillendirmek, Python uygulamasını üretmek ve dokümantasyonu gerçek doğrulama çıktılarıyla güncellemek için kullanıldı.
 
+Final jüri hazırlığı aşamasında OpenAI ChatGPT (GPT-5.6 Sol), repository review ve dokümantasyon tutarlılığı kontrolü için ikinci göz olarak kullanıldı. Bu incelemede tespit edilen değişiklikler ekip tarafından değerlendirilip doğrulandıktan sonra uygulandı.
+
 Ürün içinde canlı LLM çağrısı yoktur; nihai olay kartları deterministik korelasyon algoritmasıyla üretilir.
 
-Claude tabanlı kullanım için hazırlanan `skills/` ve `prompts/templates/` yapıları, geliştirme sürecinde Copilot tercih edildiği için kullanılmamış ve başlangıç repo bütünlüğünü korumak amacıyla değiştirilmemiştir.
+Claude tabanlı kullanım için hazırlanan `skills/` ve `prompts/templates/` yapıları, geliştirme sürecinde Copilot tercih edildiği için kullanılmamış ve başlangıç repo bütünlüğünü korumak amacıyla değiştirilmemiştir. Root'taki `copilot-instructions.md` yarışma sürecindeki geliştirme izi olarak korunmuş, GitHub Copilot'un standart konumu ayrıca `.github/copilot-instructions.md` olarak eklenmiştir.
 
 ### İnsan – AI İş Bölümü
 
@@ -30,6 +33,7 @@ Claude tabanlı kullanım için hazırlanan `skills/` ve `prompts/templates/` ya
 | Kodlama | Korelasyon uygulamasını ve web panelini üretmek | Komutları çalıştırıp çıktıyı kontrol etmek |
 | Test | JSON ve HTTP doğrulama komutlarını çalıştırmak | 7 kart ve aksiyon durum değişikliğini doğrulamak |
 | Dokümantasyon | Gerçek metriklerle doküman taslağı oluşturmak | Takım bilgisi, iletişim ve kullanılan araç sürümlerini doğrulamak |
+| Final review | Jüri gereksinimlerini, repo yapısını ve dokümantasyon tutarlılığını ikinci gözle kontrol etmek | Yalnız ekip tarafından doğrulanan değişiklikleri uygulamak |
 
 ### İş Akışımız
 
@@ -41,6 +45,8 @@ Senaryo okundu, veri formatı incelendi, kök aday skoru ve korelasyon eşiği s
 - [docs/plan.md](docs/plan.md)
 - [docs/mimari.md](docs/mimari.md)
 - [prompts/used/2026-09-16-korelasyon-uygulamasi.md](prompts/used/2026-09-16-korelasyon-uygulamasi.md)
+- [prompts/used/2026-09-16-chatgpt-final-review.md](prompts/used/2026-09-16-chatgpt-final-review.md)
+- [.github/copilot-instructions.md](.github/copilot-instructions.md)
 
 ## 2. Problemi Nasıl Çözdük
 

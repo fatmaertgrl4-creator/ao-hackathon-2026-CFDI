@@ -184,7 +184,7 @@ Final dokümantasyon gerçek çalışan çözüm ve gerçek kanıtlarla güncell
 - [x] Beklenen çıktı doğrulandı
 - [x] Demo akışı hazırlandı
 - [ ] Demo akışı gerçek ürünle uçtan uca test edildi
-- [ ] Gerekli ekran görüntüleri `demo/` altına eklendi
+- [x] Gerekli ekran görüntüleri `demo/` altına eklendi
 - [ ] Varsa demo video bağlantısı dokümante edildi
 - [ ] Sunum akışı hazırlandı
 - [ ] Demo sırasında gösterilecek X-Factor kanıtı hazır

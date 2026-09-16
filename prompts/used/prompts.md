@@ -219,9 +219,66 @@ Bu prompt, final repo görünümündeki dokümantasyon ve demo çelişkilerinin 
 - [../../docs/fazlar.md](../../docs/fazlar.md)
 - [prompts.md](prompts.md)
 
+## 9. Copilot Instructions Dosyası
+
+**Saat:** 16:51:59
+
+**Prompt:**
+
+```text
+uygulamayı geliştirirken claude değil de copilot kullandığımız için claude.md yerine şunu oluştur ve bu promptu prompts.md içine yazıp githuba commitleyip pushla, asla source kodda bir değişiklik yapma copilot-instructions.md
+ 
+# GitHub Copilot Instructions
+ 
+Bu projede geliştirme asistanı olarak GitHub Copilot kullanılmıştır.
+ 
+## Genel geliştirme kuralları
+ 
+- Önce mevcut repo yapısını ve ilgili dosyaları incele.
+
+- Yalnızca verilen görev için gerekli dosyalarda değişiklik yap.
+
+- İlgisiz refactor veya mimari değişiklik yapma.
+
+- Mevcut proje yapısını ve isimlendirmeleri koru.
+
+- Yeni dependency eklemeden önce gerçekten gerekli olup olmadığını kontrol et.
+
+- Test çalıştırılmadıysa başarılı olmuş gibi gösterme.
+
+- Yapılan değişikliklerden sonra:
+
+  - değiştirilen dosyaları,
+
+  - yapılan değişiklikleri,
+
+  - test komutlarını,
+
+  - beklenen sonucu,
+
+  - insan kontrolü gereken noktaları
+
+  açıkça belirt.
+ 
+## Proje yaklaşımı
+ 
+Geliştirme MVP odaklı yürütülmüştür.
+
+Her modül ayrı görev olarak ele alınmış ve yalnızca ihtiyaç duyulan kapsam geliştirilmiştir.
+```
+
+**Jüri için kısa yorum:**
+
+Bu prompt, proje içinde kullanılan asistanın Copilot olduğunu netleştirmek için Claude odaklı kök yönerge dosyasının yerine Copilot odaklı bir talimat dosyası konulmasını istedi. İstek doğrultusunda kaynak kodlara dokunulmadan yeni [copilot-instructions.md](../../copilot-instructions.md) oluşturuldu, eski [CLAUDE.md](../../CLAUDE.md) kaldırıldı ve bu karar prompt kanıtlarına eklendi.
+
+**Repository kanıtı:**
+
+- [../../copilot-instructions.md](../../copilot-instructions.md)
+- [prompts.md](prompts.md)
+
 ## Özet
 
-Bu oturumdaki promptlar, çözümün sekiz ana gelişim aşamasını gösterir:
+Bu oturumdaki promptlar, çözümün dokuz ana gelişim aşamasını gösterir:
 
 1. Senaryo gereksinimlerine uygun ilk korelasyon uygulaması.
 2. Bağımlılık/envanter verisiyle zenginleştirilmiş grup alarm ekranı.
@@ -231,3 +288,4 @@ Bu oturumdaki promptlar, çözümün sekiz ana gelişim aşamasını gösterir:
 6. Faz durumlarının gerçek repo kanıtlarıyla hizalanması ve UI / metin netleştirmeleri.
 7. Kullanılmayan Claude odaklı hazırlık yapılarının dokümantasyonda netleştirilmesi.
 8. Demo kanıtları, veri yolu anlatımı ve final repo görünümünün temizlenmesi.
+9. Copilot kullanımına uygun kök talimat dosyasının oluşturulması.
